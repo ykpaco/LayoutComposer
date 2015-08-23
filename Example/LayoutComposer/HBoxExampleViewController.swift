@@ -121,7 +121,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view3 = makeItemView(title: "view3 flex: 3", color: UIColor.blueColor())
         let view4 = makeItemView(title: "view3 flex: 2", color: UIColor.yellowColor())
 
-        contentView.applyLayout(HBox(), items: [
+        contentView.applyLayout(HBox(defaultMargins: (0, 10, 0, 0)), items: [
             $(view1, width: 50),
             $(view2, flex: 1),
             $(view3, flex: 3),
@@ -134,7 +134,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
-        contentView.applyLayout(HBox(align: .Start), items: [
+        contentView.applyLayout(HBox(defaultMargins: (0, 10, 0, 0), align: .Start), items: [
             $(view1, width: 50, height: 100),
             $(view2, width: 75, height: 100),
             $(view3, width: 100, height: 200)
@@ -146,7 +146,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
-        contentView.applyLayout(HBox(align: .End), items: [
+        contentView.applyLayout(HBox(defaultMargins: (0, 10, 0, 0), align: .End), items: [
             $(view1, width: 50, height: 100),
             $(view2, width: 75, height: 100),
             $(view3, width: 100, height: 200)
@@ -158,7 +158,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
-        contentView.applyLayout(HBox(align: .Center), items: [
+        contentView.applyLayout(HBox(defaultMargins: (0, 10, 0, 0), align: .Center), items: [
             $(view1, width: 50, height: 100),
             $(view2, width: 75, height: 100),
             $(view3, width: 100, height: 200)
@@ -170,7 +170,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
         let view3 = makeItemView(title: "view3 (if height is set align centered)", color: UIColor.blueColor())
 
-        contentView.applyLayout(HBox(align: .Stretch), items: [
+        contentView.applyLayout(HBox(defaultMargins: (0, 10, 0, 0), align: .Stretch), items: [
             $(view1, width: 50),
             $(view2, width: 75),
             $(view3, width: 100, height: 100)
@@ -184,7 +184,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view4 = makeItemView(title: "view4 (Default if height is set)", color: UIColor.yellowColor())
         let view5 = makeItemView(title: "view5 (Default if height is not set)", color: UIColor.magentaColor())
 
-        contentView.applyLayout(HBox(), items: [
+        contentView.applyLayout(HBox(defaultMargins: (0, 10, 0, 0)), items: [
             $(view1, height: 200, flex: 1, align: .Start),
             $(view2, height: 200, flex: 1, align: .Center),
             $(view3, height: 200, flex: 1, align: .End),
@@ -202,7 +202,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
         contentView.applyLayout(VBox(align: .Center), item:
-            $(container, width: 300, height: 300, layout: HBox(pack: .Start), items: [
+            $(container, width: 300, height: 300, layout: HBox(defaultMargins: (0, 10, 0, 0), pack: .Start), items: [
                 $(view1, width: 50),
                 $(view2, width: 50),
                 $(view3, width: 100)
@@ -219,7 +219,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
         contentView.applyLayout(VBox(align: .Center), item:
-            $(container, width: 300, height: 300, layout: HBox(pack: .Center), items: [
+            $(container, width: 300, height: 300, layout: HBox(defaultMargins: (0, 10, 0, 0), pack: .Center), items: [
                 $(view1, width: 50),
                 $(view2, width: 50),
                 $(view3, width: 100)
@@ -236,7 +236,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
         contentView.applyLayout(VBox(align: .Center), item:
-            $(container, width: 300, height: 300, layout: HBox(pack: .End), items: [
+            $(container, width: 300, height: 300, layout: HBox(defaultMargins: (0, 10, 0, 0), pack: .End), items: [
                 $(view1, width: 50),
                 $(view2, width: 50),
                 $(view3, width: 100)
@@ -253,7 +253,7 @@ class HBoxExampleViewController: ExampleViewController {
         let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
 
         contentView.applyLayout(VBox(align: .Center), item:
-            $(container, height: 300, layout: HBox(pack: .Fit), items: [ // container width is adjusted to fit items.
+            $(container, height: 300, layout: HBox(defaultMargins: (0, 10, 0, 0), pack: .Fit), items: [ // container width is adjusted to fit items.
                 $(view1, width: 50),
                 $(view2, width: 50),
                 $(view3, width: 100)

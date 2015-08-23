@@ -770,43 +770,44 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
             container.addConstraint(hconstraint)
         }
         else {
-            // if halign is not set, expand the width to the container width.
-            let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
-            let leftConstraint = NSLayoutConstraint(
-                item: view,
-                attribute: .Left,
-                relatedBy: .Equal,
-                toItem: container,
-                attribute: .Left,
-                multiplier: 1.0,
-                constant: leftMargin)
-            leftConstraint.priority = 250
-
-            let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
-            let rightConstraint = NSLayoutConstraint(
-                item: view,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: container,
-                attribute: .Right,
-                multiplier: 1.0,
-                constant: -rightMargin)
-            rightConstraint.priority = 250
-            
             //
-            // if halign expansion is not available, set halign as center.
+            // if halign is not set.
             //
-            let centerXConstraint = NSLayoutConstraint(
-                item: view,
-                attribute: .CenterX,
-                relatedBy: .Equal,
-                toItem: container,
-                attribute: .CenterX,
-                multiplier: 1.0,
-                constant: 0)
-            centerXConstraint.priority = 200
-
-            container.addConstraints([leftConstraint, rightConstraint, centerXConstraint])
+            if let widthConstraint = getWidthConstraintOfView(item.view) {
+                // align centered is with constraint is set.
+                let centerXConstraint = NSLayoutConstraint(
+                    item: view,
+                    attribute: .CenterX,
+                    relatedBy: .Equal,
+                    toItem: container,
+                    attribute: .CenterX,
+                    multiplier: 1.0,
+                    constant: 0)
+                container.addConstraint(centerXConstraint)
+            }
+            else {
+                // expand the width to the container width if width constraint is not set.
+                let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
+                let leftConstraint = NSLayoutConstraint(
+                    item: view,
+                    attribute: .Left,
+                    relatedBy: .Equal,
+                    toItem: container,
+                    attribute: .Left,
+                    multiplier: 1.0,
+                    constant: leftMargin)
+                
+                let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
+                let rightConstraint = NSLayoutConstraint(
+                    item: view,
+                    attribute: .Right,
+                    relatedBy: .Equal,
+                    toItem: container,
+                    attribute: .Right,
+                    multiplier: 1.0,
+                    constant: -rightMargin)
+                container.addConstraints([leftConstraint, rightConstraint])
+            }
         }
 
         if let valign = item.valign {
@@ -846,44 +847,43 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
         }
         else {
             //
-            // if valign is not set, expand the height to the container height.
+            // if valign is not set.
             //
-            let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
-            let topConstraint = NSLayoutConstraint(
-                item: view,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: container,
-                attribute: .Top,
-                multiplier: 1.0,
-                constant: topMargin)
-            topConstraint.priority = 250 // set low priority
-
-            let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
-            let bottomConstraint = NSLayoutConstraint(
-                item: view,
-                attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: container,
-                attribute: .Bottom,
-                multiplier: 1.0,
-                constant: -bottomMargin)
-            bottomConstraint.priority = 250 // set low priority
-
-            //
-            // if valign expansion is not available, set valign as center.
-            //
-            let centerYConstraint = NSLayoutConstraint(
-                item: view,
-                attribute: .CenterY,
-                relatedBy: .Equal,
-                toItem: container,
-                attribute: .CenterY,
-                multiplier: 1.0,
-                constant: 0)
-            centerYConstraint.priority = 200
-
-            container.addConstraints([topConstraint, bottomConstraint, centerYConstraint])
+            if let heightConstraint = getHeightConstraintOfView(item.view) {
+                // align centered is with constraint is set.
+                let centerYConstraint = NSLayoutConstraint(
+                    item: view,
+                    attribute: .CenterY,
+                    relatedBy: .Equal,
+                    toItem: container,
+                    attribute: .CenterY,
+                    multiplier: 1.0,
+                    constant: 0)
+                container.addConstraint(centerYConstraint)
+            }
+            else {
+                // expand the width to the container width if width constraint is not set.
+                let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
+                let topConstraint = NSLayoutConstraint(
+                    item: view,
+                    attribute: .Top,
+                    relatedBy: .Equal,
+                    toItem: container,
+                    attribute: .Top,
+                    multiplier: 1.0,
+                    constant: topMargin)
+                
+                let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
+                let bottomConstraint = NSLayoutConstraint(
+                    item: view,
+                    attribute: .Bottom,
+                    relatedBy: .Equal,
+                    toItem: container,
+                    attribute: .Bottom,
+                    multiplier: 1.0,
+                    constant: -bottomMargin)
+                container.addConstraints([topConstraint, bottomConstraint])
+            }
         }
     }
 }

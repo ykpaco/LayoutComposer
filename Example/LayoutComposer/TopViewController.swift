@@ -71,7 +71,9 @@ class TopViewController: BaseViewController {
                 
                 $(makeButton(title: "Relative 1", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example1.rawValue)),
                 $(makeButton(title: "Relative 2", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example2.rawValue)),
-                $(makeButton(title: "Relative 3", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example3.rawValue))
+                $(makeButton(title: "Relative 3", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example3.rawValue)),
+                
+                $(makeButton(title: "Fit", action: "onFitExampleTapped:", tag: FitExampleType.Example1.rawValue))
             ])
         ])
     }
@@ -107,6 +109,15 @@ class TopViewController: BaseViewController {
             exampleType = RelativeExampleType(rawValue: sender.tag)
         {
             let vc = RelativeExampleViewController(exampleType: exampleType, headerTitle: title)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func onFitExampleTapped(sender: UIButton) {
+        if let title = sender.titleForState(.Normal),
+            exampleType = FitExampleType(rawValue: sender.tag)
+        {
+            let vc = FitExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)
         }
     }

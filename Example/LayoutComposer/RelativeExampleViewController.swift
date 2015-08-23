@@ -72,12 +72,12 @@ class RelativeExampleViewController: ExampleViewController {
            $(view3, halign: .Center, width: 100, height: 100)
         ])
     }
-    
+
     private func layoutExample3() {
         let view1 = makeItemView(title: "view1 valign: .Top, width is not set", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2 valign: .Center width is set", color: UIColor.greenColor())
         let view3 = makeItemView(title: "view3 valign: .Bottom width is set", color: UIColor.blueColor())
-        
+
         contentView.applyLayout(Relative(), items: [
             $(view1, valign: .Top, height: 150),
             $(view2, valign: .Center, height: 150, width: 200),

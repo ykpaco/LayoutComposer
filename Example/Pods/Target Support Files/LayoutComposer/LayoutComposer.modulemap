@@ -1,0 +1,6 @@
+framework module LayoutComposer {
+  umbrella header "LayoutComposer-umbrella.h"
+
+  export *
+  module * { export * }
+}

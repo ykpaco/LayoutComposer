@@ -1,0 +1,25 @@
+{
+  "name": "LayoutComposer",
+  "version": "0.1.0",
+  "summary": "A short description of LayoutComposer.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/LayoutComposer",
+  "license": "MIT",
+  "authors": {
+    "Yusuke Kawakami": "kawakami.paco.yusuke@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/LayoutComposer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "LayoutComposer": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

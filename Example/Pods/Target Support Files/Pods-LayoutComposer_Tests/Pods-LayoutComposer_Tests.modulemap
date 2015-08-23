@@ -1,0 +1,6 @@
+framework module Pods_LayoutComposer_Tests {
+  umbrella header "Pods-LayoutComposer_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

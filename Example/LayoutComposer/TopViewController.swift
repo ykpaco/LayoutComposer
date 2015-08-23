@@ -45,6 +45,7 @@ class TopViewController: BaseViewController {
             $(scrollView, flex: 1, layout: VBox(align: .Center, pack: .Fit, defaultMargins: (10, 0, 0, 0)), items: [
                 $(makeButton(title: "VBox Basic", action: "onVBoxExampleTapped:", tag: VBoxExampleType.Basic.rawValue)),
                 $(makeButton(title: "VBox Margin", action: "onVBoxExampleTapped:", tag: VBoxExampleType.Margin.rawValue)),
+                $(makeButton(title: "VBox Default Margin", action: "onVBoxExampleTapped:", tag: VBoxExampleType.DefaultMargin.rawValue)),
                 $(makeButton(title: "VBox Flex Height", action: "onVBoxExampleTapped:", tag: VBoxExampleType.Flex.rawValue)),
                 $(makeButton(title: "VBox Align Start(Left)", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignStart.rawValue)),
                 $(makeButton(title: "VBox Align End(Right)", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignEnd.rawValue)),
@@ -58,6 +59,7 @@ class TopViewController: BaseViewController {
 
                 $(makeButton(title: "HBox Basic", action: "onHBoxExampleTapped:", tag: HBoxExampleType.Basic.rawValue)),
                 $(makeButton(title: "HBox Margin", action: "onHBoxExampleTapped:", tag: HBoxExampleType.Margin.rawValue)),
+                $(makeButton(title: "HBox Default Margin", action: "onHBoxExampleTapped:", tag: HBoxExampleType.DefaultMargin.rawValue)),
                 $(makeButton(title: "HBox Flex Width", action: "onHBoxExampleTapped:", tag: HBoxExampleType.Flex.rawValue)),
                 $(makeButton(title: "HBox Align Start(Top)", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignStart.rawValue)),
                 $(makeButton(title: "HBox Align End(Bottom)", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignEnd.rawValue)),

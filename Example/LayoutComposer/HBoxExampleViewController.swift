@@ -10,18 +10,19 @@ import UIKit
 import LayoutComposer
 
 enum HBoxExampleType: Int {
-    case Basic = 1
-    case Margin = 2
-    case Flex = 3
-    case AlignStart = 4
-    case AlignEnd = 5
-    case AlignCenter = 6
-    case AlignStretch = 7
-    case AlignEachComponent = 8
-    case PackStart = 9
-    case PackEnd = 10
-    case PackCenter = 11
-    case PackFit = 12
+    case Basic
+    case Margin
+    case DefaultMargin
+    case Flex
+    case AlignStart
+    case AlignEnd
+    case AlignCenter
+    case AlignStretch
+    case AlignEachComponent
+    case PackStart
+    case PackEnd
+    case PackCenter
+    case PackFit
 }
 
 class HBoxExampleViewController: ExampleViewController {
@@ -48,6 +49,8 @@ class HBoxExampleViewController: ExampleViewController {
             layoutExampleBasic()
         case .Margin:
             layoutExampleMargin()
+        case .DefaultMargin:
+            layoutExampleDefaultMargin()
         case .Flex:
             layoutExampleFlex()
         case .AlignStart:
@@ -98,6 +101,18 @@ class HBoxExampleViewController: ExampleViewController {
             $(view2, width: 100, marginLeft: 10, marginTop: 20, marginBottom: 30),
             $(view3, width: 75, margins: (10, 20, 10, 0))
         ])
+    }
+    
+    private func layoutExampleDefaultMargin() {
+        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
+        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
+        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+        
+        contentView.applyLayout(HBox(defaultMargins: (20, 10, 20, 0)), items: [
+            $(view1, width: 50),
+            $(view2, width: 100),
+            $(view3, width: 75)
+            ])
     }
 
     private func layoutExampleFlex() {

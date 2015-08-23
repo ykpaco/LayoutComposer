@@ -448,8 +448,10 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
             container.addConstraint(centerConstraint)
         }
         else if align == .Stretch {
-            if let width = item.width {
-                // if width is set, the item is aligned to center.
+            if let widthConstraint = getWidthConstraintOfView(item.view) {
+                //
+                // if width constraint is set, align centered.
+                //
                 let centerConstraint = NSLayoutConstraint(
                     item: item.view,
                     attribute: .CenterX,
@@ -461,6 +463,9 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
                 container.addConstraint(centerConstraint)
             }
             else {
+                //
+                // if width constraint is not set, expand width to fit parent view.
+                //
                 let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
                 let leftConstraint = NSLayoutConstraint(
                     item: item.view,
@@ -470,6 +475,7 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
                     attribute: .Left,
                     multiplier: 1.0,
                     constant: leftMargin)
+                
                 let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
                 let rightConstraint = NSLayoutConstraint(
                     item: item.view,
@@ -479,6 +485,7 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
                     attribute: .Right,
                     multiplier: 1.0,
                     constant: -rightMargin)
+                
                 container.addConstraints([leftConstraint, rightConstraint])
             }
         }
@@ -674,8 +681,10 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
             container.addConstraint(centerConstraint)
         }
         else if align == .Stretch {
-            if let height = item.height {
-                // if height is set, the item is aligned to center.
+            if let heightConstraint = getHeightConstraintOfView(item.view) {
+                //
+                // if height constraint is set, align centered.
+                //
                 let centerConstraint = NSLayoutConstraint(
                     item: item.view,
                     attribute: .CenterY,
@@ -687,6 +696,9 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
                 container.addConstraint(centerConstraint)
             }
             else {
+                //
+                // if width constraint is not set, expand width to fit parent view.
+                //
                 let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
                 let topConstraint = NSLayoutConstraint(
                     item: item.view,
@@ -696,6 +708,7 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
                     attribute: .Top,
                     multiplier: 1.0,
                     constant: topMargin)
+                
                 let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
                 let bottomConstraint = NSLayoutConstraint(
                     item: item.view,
@@ -705,6 +718,7 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
                     attribute: .Bottom,
                     multiplier: 1.0,
                     constant: -bottomMargin)
+                
                 container.addConstraints([topConstraint, bottomConstraint])
             }
         }
@@ -1061,7 +1075,6 @@ private func createRightSpacer(container: UIView) -> UIView {
     return rightSpacer
 }
 
-/*
 private func getWidthConstraintOfView(view: UIView) -> NSLayoutConstraint? {
     for obj in view.constraints() {
         if let constraint = obj as? NSLayoutConstraint {
@@ -1083,7 +1096,6 @@ private func getHeightConstraintOfView(view: UIView) -> NSLayoutConstraint? {
     }
     return nil
 }
-*/
 
 public extension UIView {
     public func applyLayout(layout: Layout, items: [LayoutComponent]) -> LayoutComponent {

@@ -153,12 +153,12 @@ class HBoxExampleViewController: ExampleViewController {
     private func layoutExampleAlignStretch() {
         let view1 = makeItemView(title: "view1", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 (if width is set align centered)", color: UIColor.blueColor())
+        let view3 = makeItemView(title: "view3 (if height is set align centered)", color: UIColor.blueColor())
 
         contentView.applyLayout(HBox(align: .Stretch), items: [
             $(view1, width: 50),
             $(view2, width: 75),
-            $(view3, width: 100)
+            $(view3, width: 100, height: 100)
         ])
     }
 

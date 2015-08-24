@@ -1,5 +1,5 @@
 PODS:
-  - LayoutComposer (0.1.0)
+  - LayoutComposer (0.1.1)
 
 DEPENDENCIES:
   - LayoutComposer (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  LayoutComposer: a062d8328ae5fca562e722df91c399ddf3443232
+  LayoutComposer: b656d712bc76c62505a57578c35381c799262d18
 
 COCOAPODS: 0.38.2

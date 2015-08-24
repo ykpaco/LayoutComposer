@@ -61,6 +61,8 @@ contentView.applyLayout(VBox(), items: [
 
 `VBox` places UIViews along the vertical axis. Each LayoutComponent can specify height in pixel or by using `flex` option.
 The flex option set height of the LayoutComponent relative to each view having `flex` option.
+In the above example, view4 is twice the height of view3.
+
 LayoutComponents having the flex option divide the available area.
 If neither height or flex is specified, the intrinsic content size of the view is used.
 
@@ -79,7 +81,7 @@ contentView.applyLayout(VBox(), items: [
 
 In VBox/HBox layout, margins of each LayoutComponent can be set by
 `margingTop`, `marginBottom`, `marginLeft`, `marginRight` options.
-`margins` option is also available for setting margins by tuple.
+`margins` option is also available for setting margins by 4-tuple (top-margin, left-margin, bottom-margin, right-margin).
 
 
 ![VBox DefaultMargin](Images/vbox3.png)

@@ -43,7 +43,7 @@ class ExampleViewController: BaseViewController {
         backBtn.addTarget(self, action: "onBackTapped:", forControlEvents: .TouchUpInside)
         
         contentView = UIView()
-        contentView.backgroundColor = UIColor.lightGrayColor()
+        contentView.backgroundColor = UIColor.grayColor()
         
         view.applyLayout(VBox(), items: [
             $(header, height: 65, layout: Relative(), items: [

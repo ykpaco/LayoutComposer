@@ -1,6 +1,6 @@
 # LayoutComposer
 
-[![CI Status](http://img.shields.io/travis/Yusuke Kawakami/LayoutComposer.svg?style=flat)](https://travis-ci.org/Yusuke Kawakami/LayoutComposer)
+[![CI Status](http://img.shields.io/travis/ykpaco/LayoutComposer.svg?style=flat)](https://travis-ci.org/ykpaco/LayoutComposer)
 [![Version](https://img.shields.io/cocoapods/v/LayoutComposer.svg?style=flat)](http://cocoapods.org/pods/LayoutComposer)
 [![License](https://img.shields.io/cocoapods/l/LayoutComposer.svg?style=flat)](http://cocoapods.org/pods/LayoutComposer)
 [![Platform](https://img.shields.io/cocoapods/p/LayoutComposer.svg?style=flat)](http://cocoapods.org/pods/LayoutComposer)
@@ -21,7 +21,7 @@ It makes Auto Layout code very simple and intuitive.
 
 ### Basic
 
-![Basic](Images/vbox_basic.png)
+![Basic](Images/basic.png)
 
 ```swift
 let contentView: UIView = ...

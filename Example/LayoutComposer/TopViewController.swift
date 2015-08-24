@@ -75,7 +75,9 @@ class TopViewController: BaseViewController {
                 $(makeButton(title: "Relative 2", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example2.rawValue)),
                 $(makeButton(title: "Relative 3", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example3.rawValue)),
                 
-                $(makeButton(title: "Fit", action: "onFitExampleTapped:", tag: FitExampleType.Example1.rawValue))
+                $(makeButton(title: "Fit", action: "onFitExampleTapped:", tag: FitExampleType.Example1.rawValue)),
+                
+                $(makeButton(title: "Nesting Layout", action: "onNestExampleTapped:", tag: NestExampleType.Example1.rawValue))
             ])
         ])
     }
@@ -120,6 +122,15 @@ class TopViewController: BaseViewController {
             exampleType = FitExampleType(rawValue: sender.tag)
         {
             let vc = FitExampleViewController(exampleType: exampleType, headerTitle: title)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func onNestExampleTapped(sender: UIButton) {
+        if let title = sender.titleForState(.Normal),
+            exampleType = NestExampleType(rawValue: sender.tag)
+        {
+            let vc = NestExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)
         }
     }

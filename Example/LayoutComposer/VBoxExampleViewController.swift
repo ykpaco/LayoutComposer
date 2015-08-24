@@ -82,12 +82,14 @@ class VBoxExampleViewController: ExampleViewController {
     private func layoutExampleBasic() {
         let view1 = makeItemView(title: "view1 height: 50", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2 height: 100", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 height: 75", color: UIColor.blueColor())
+        let view3 = makeItemView(title: "view3 flex: 1", color: UIColor.blueColor())
+        let view4 = makeItemView(title: "view4 flex: 2", color: UIColor.yellowColor())
 
         contentView.applyLayout(VBox(), items: [
             $(view1, height: 50),
             $(view2, height: 100),
-            $(view3, height: 75)
+            $(view3, flex: 1),
+            $(view4, flex: 2)
         ])
     }
 

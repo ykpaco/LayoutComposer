@@ -18,6 +18,8 @@
 		B1D1C3341B89676600BB6175 /* HBoxExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D1C3331B89676600BB6175 /* HBoxExampleViewController.swift */; };
 		B1D1C3361B89754B00BB6175 /* RelativeExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D1C3351B89754B00BB6175 /* RelativeExampleViewController.swift */; };
 		B1D1C3381B89BE8000BB6175 /* FitExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D1C3371B89BE8000BB6175 /* FitExampleViewController.swift */; };
+		B1D1C33A1B8A94DC00BB6175 /* NextExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D1C3391B8A94DC00BB6175 /* NextExampleViewController.swift */; };
+		B1D1C33D1B8A9ED900BB6175 /* avatar.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B1D1C33C1B8A9ED900BB6175 /* avatar.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		B1D1C3331B89676600BB6175 /* HBoxExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HBoxExampleViewController.swift; sourceTree = "<group>"; };
 		B1D1C3351B89754B00BB6175 /* RelativeExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelativeExampleViewController.swift; sourceTree = "<group>"; };
 		B1D1C3371B89BE8000BB6175 /* FitExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FitExampleViewController.swift; sourceTree = "<group>"; };
+		B1D1C3391B8A94DC00BB6175 /* NextExampleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextExampleViewController.swift; sourceTree = "<group>"; };
+		B1D1C33C1B8A9ED900BB6175 /* avatar.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar.jpeg; sourceTree = "<group>"; };
 		C0A623DD58A5C242C37482B3 /* Pods-LayoutComposer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LayoutComposer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LayoutComposer_Example/Pods-LayoutComposer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C1594DC204F753C855267ED8 /* Pods-LayoutComposer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LayoutComposer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LayoutComposer_Tests/Pods-LayoutComposer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D59454EF8B950F9ACF9264EA /* Pods_LayoutComposer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LayoutComposer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +91,7 @@
 		607FACD21AFB9204008FA782 /* Example for LayoutComposer */ = {
 			isa = PBXGroup;
 			children = (
+				B1D1C33B1B8A9ED900BB6175 /* Images */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				B1D1C32D1B87D0AD00BB6175 /* BaseViewController.swift */,
 				607FACD71AFB9204008FA782 /* TopViewController.swift */,
@@ -95,6 +100,7 @@
 				B1D1C3331B89676600BB6175 /* HBoxExampleViewController.swift */,
 				B1D1C3311B88757100BB6175 /* VBoxExampleViewController.swift */,
 				B1D1C3351B89754B00BB6175 /* RelativeExampleViewController.swift */,
+				B1D1C3391B8A94DC00BB6175 /* NextExampleViewController.swift */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -119,6 +125,14 @@
 				A3AFF5C8AB4C17F188BDB780 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		B1D1C33B1B8A9ED900BB6175 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B1D1C33C1B8A9ED900BB6175 /* avatar.jpeg */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		C9BD64FE185BBE4A963B75A8 /* Pods */ = {
@@ -194,6 +208,7 @@
 			files = (
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				B1D1C33D1B8A9ED900BB6175 /* avatar.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +270,7 @@
 				B1D1C3361B89754B00BB6175 /* RelativeExampleViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* TopViewController.swift in Sources */,
 				B1D1C3301B88720900BB6175 /* ExampleViewController.swift in Sources */,
+				B1D1C33A1B8A94DC00BB6175 /* NextExampleViewController.swift in Sources */,
 				B1D1C3341B89676600BB6175 /* HBoxExampleViewController.swift in Sources */,
 				B1D1C3321B88757100BB6175 /* VBoxExampleViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

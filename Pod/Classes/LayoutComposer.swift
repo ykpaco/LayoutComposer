@@ -107,8 +107,16 @@ public class LayoutComponent {
     public let align: BoxLayoutAlign?
     public let halign: RelativeLayoutHAlign?
     public let valign: RelativeLayoutVAlign?
-    var widthConstraint: NSLayoutConstraint?
-    var heightConstraint: NSLayoutConstraint?
+    var widthConstraintInternal: NSLayoutConstraint?
+    var heightConstraintInternal: NSLayoutConstraint?
+    
+    public var widthConstraint: NSLayoutConstraint? {
+        return widthConstraintInternal
+    }
+    
+    public var heightConstraint: NSLayoutConstraint? {
+        return heightConstraintInternal
+    }
 
     public init(view: UIView,
         width: CGFloat?,
@@ -140,12 +148,12 @@ public class LayoutComponent {
             self.align = align
             self.halign = halign
             self.valign = valign
-            self.widthConstraint = widthConstraint
-            self.heightConstraint = heightConstraint
+            self.widthConstraintInternal = widthConstraint
+            self.heightConstraintInternal = heightConstraint
     }
 
     public func updateWidth(width: CGFloat) {
-        if let constraint = widthConstraint {
+        if let constraint = widthConstraintInternal {
             view.removeConstraint(constraint)
         }
         let constraint = NSLayoutConstraint(
@@ -157,12 +165,12 @@ public class LayoutComponent {
             multiplier: 1.0,
             constant: width)
         view.addConstraint(constraint)
-        widthConstraint = constraint
+        widthConstraintInternal = constraint
         self.width = width
     }
 
     public func updateHeight(height: CGFloat) {
-        if let constraint = heightConstraint {
+        if let constraint = heightConstraintInternal {
             view.removeConstraint(constraint)
         }
         let constraint = NSLayoutConstraint(
@@ -174,7 +182,7 @@ public class LayoutComponent {
             multiplier: 1.0,
             constant: height)
         view.addConstraint(constraint)
-        heightConstraint = constraint
+        heightConstraintInternal = constraint
         self.height = height
     }
 }

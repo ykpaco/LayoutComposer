@@ -5,8 +5,3 @@ target 'LayoutComposer_Example', :exclusive => true do
   pod "LayoutComposer", :path => "../"
 end
 
-target 'LayoutComposer_Tests', :exclusive => true do
-  pod "LayoutComposer", :path => "../"
-
-  
-end

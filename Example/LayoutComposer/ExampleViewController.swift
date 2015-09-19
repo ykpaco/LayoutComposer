@@ -38,7 +38,7 @@ class ExampleViewController: BaseViewController {
         titleLabel.text = headerTitle
         titleLabel.textColor = UIColor.whiteColor()
         
-        let backBtn = UIButton.buttonWithType(.System) as! UIButton
+        let backBtn = UIButton(type: .System)
         backBtn.setTitle("Back", forState: .Normal)
         backBtn.addTarget(self, action: "onBackTapped:", forControlEvents: .TouchUpInside)
         
@@ -63,7 +63,7 @@ class ExampleViewController: BaseViewController {
         navigationController?.popViewControllerAnimated(true)
     }
 
-    func makeItemView(#title: String, color: UIColor) -> UIView {
+    func makeItemView(title title: String, color: UIColor) -> UIView {
         let retView = UIView()
         retView.backgroundColor = color
 

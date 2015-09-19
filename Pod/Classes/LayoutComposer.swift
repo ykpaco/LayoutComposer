@@ -200,7 +200,7 @@ public func $(view: UIView?,
     align: BoxLayoutAlign? = nil,
     halign: RelativeLayoutHAlign? = nil,
     valign: RelativeLayoutVAlign? = nil,
-    #item: LayoutComponent) -> LayoutComponent {
+    item: LayoutComponent) -> LayoutComponent {
 
         return $(view,
             width: width,
@@ -240,13 +240,13 @@ public func $(view: UIView?,
         if let _layout = layout, _items = items {
             switch _layout {
             case let vbox as VBox:
-                 addItemsToContainerWithVBox(container, vbox, _items)
+                 addItemsToContainerWithVBox(container, layout: vbox, items: _items)
             case let hbox as HBox:
-                addItemsToContainerWithHBox(container, hbox, _items)
+                addItemsToContainerWithHBox(container, layout: hbox, items: _items)
             case let relative as Relative:
-                addItemsToContainerWithRelative(container, relative, _items)
+                addItemsToContainerWithRelative(container, layout: relative, items: _items)
             case let fit as Fit:
-                addItemsToContainerWithFit(container, fit, _items)
+                addItemsToContainerWithFit(container, layout: fit, items: _items)
             default:
                 break
             }
@@ -269,7 +269,6 @@ public func $(view: UIView?,
 }
 
 private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items: [LayoutComponent]) {
-    var hasFlex = false
     var minFlex:CGFloat?
     var minFlexItem: LayoutComponent?
     for item in items {
@@ -286,7 +285,7 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
                 minFlexItem = item
             }
         }
-        item.view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        item.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
     if minFlexItem != nil && minFlex != nil || layout.pack == .Fit {
@@ -456,7 +455,7 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
             container.addConstraint(centerConstraint)
         }
         else if align == .Stretch {
-            if let widthConstraint = getWidthConstraintOfView(item.view) {
+            if let _ = getWidthConstraintOfView(item.view) {
                 //
                 // if width constraint is set, align centered.
                 //
@@ -502,7 +501,6 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
 }
 
 private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items: [LayoutComponent]) {
-    var hasFlex = false
     var minFlex:CGFloat?
     var minFlexItem: LayoutComponent?
     for item in items {
@@ -519,7 +517,7 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
                 minFlexItem = item
             }
         }
-        item.view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        item.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
     if minFlexItem != nil && minFlex != nil || layout.pack == .Fit {
@@ -689,7 +687,7 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
             container.addConstraint(centerConstraint)
         }
         else if align == .Stretch {
-            if let heightConstraint = getHeightConstraintOfView(item.view) {
+            if let _ = getHeightConstraintOfView(item.view) {
                 //
                 // if height constraint is set, align centered.
                 //
@@ -737,7 +735,7 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
 private func addItemsToContainerWithRelative(container: UIView, layout: Relative, items: [LayoutComponent]) {
     for item in items {
         let view = item.view
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
 
         container.addSubview(item.view)
         if let halign = item.halign {
@@ -781,7 +779,7 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
             //
             // if halign is not set.
             //
-            if let widthConstraint = getWidthConstraintOfView(item.view) {
+            if let _ = getWidthConstraintOfView(item.view) {
                 // align centered is with constraint is set.
                 let centerXConstraint = NSLayoutConstraint(
                     item: view,
@@ -857,7 +855,7 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
             //
             // if valign is not set.
             //
-            if let heightConstraint = getHeightConstraintOfView(item.view) {
+            if let _ = getHeightConstraintOfView(item.view) {
                 // align centered is with constraint is set.
                 let centerYConstraint = NSLayoutConstraint(
                     item: view,
@@ -899,7 +897,7 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
 private func addItemsToContainerWithFit(container: UIView, layout: Fit, items: [LayoutComponent]) {
     for item in items {
         container.addSubview(item.view)
-        item.view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        item.view.translatesAutoresizingMaskIntoConstraints = false
         let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
         let leftConstraint = NSLayoutConstraint(
             item: item.view,
@@ -947,7 +945,7 @@ private func createTopSpacer(container: UIView) -> UIView {
     let topSpacer = UIView()
     topSpacer.userInteractionEnabled = false
     container.addSubview(topSpacer)
-    topSpacer.setTranslatesAutoresizingMaskIntoConstraints(false)
+    topSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let topConstraint = NSLayoutConstraint(
         item: topSpacer,
@@ -982,7 +980,7 @@ private func createBottomSpacer(container: UIView) -> UIView {
     let bottomSpacer = UIView()
     bottomSpacer.userInteractionEnabled = false
     container.addSubview(bottomSpacer)
-    bottomSpacer.setTranslatesAutoresizingMaskIntoConstraints(false)
+    bottomSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let bottomConstraint = NSLayoutConstraint(
         item: bottomSpacer,
@@ -1017,7 +1015,7 @@ private func createLeftSpacer(container: UIView) -> UIView {
     let leftSpacer = UIView()
     leftSpacer.userInteractionEnabled = false
     container.addSubview(leftSpacer)
-    leftSpacer.setTranslatesAutoresizingMaskIntoConstraints(false)
+    leftSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let leftConstraint = NSLayoutConstraint(
         item: leftSpacer,
@@ -1052,7 +1050,7 @@ private func createRightSpacer(container: UIView) -> UIView {
     let rightSpacer = UIView()
     rightSpacer.userInteractionEnabled = false
     container.addSubview(rightSpacer)
-    rightSpacer.setTranslatesAutoresizingMaskIntoConstraints(false)
+    rightSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let rightConstraint = NSLayoutConstraint(
         item: rightSpacer,
@@ -1084,22 +1082,18 @@ private func createRightSpacer(container: UIView) -> UIView {
 }
 
 private func getWidthConstraintOfView(view: UIView) -> NSLayoutConstraint? {
-    for obj in view.constraints() {
-        if let constraint = obj as? NSLayoutConstraint {
-            if constraint.firstItem === view && constraint.firstAttribute == .Width {
-                return constraint
-            }
+    for constraint in view.constraints {
+        if constraint.firstItem === view && constraint.firstAttribute == .Width {
+            return constraint
         }
     }
     return nil
 }
 
 private func getHeightConstraintOfView(view: UIView) -> NSLayoutConstraint? {
-    for obj in view.constraints() {
-        if let constraint = obj as? NSLayoutConstraint {
-            if constraint.firstItem === view && constraint.firstAttribute == .Height {
-                return constraint
-            }
+    for constraint in view.constraints {
+        if constraint.firstItem === view && constraint.firstAttribute == .Height {
+            return constraint
         }
     }
     return nil
@@ -1114,7 +1108,7 @@ public extension UIView {
         return $(self, layout: layout, item: item)
     }
 
-    public func setSizeConstraint(#width: CGFloat?, height: CGFloat?) -> (NSLayoutConstraint?, NSLayoutConstraint?) {
+    public func setSizeConstraint(width width: CGFloat?, height: CGFloat?) -> (NSLayoutConstraint?, NSLayoutConstraint?) {
         var widthConstraint: NSLayoutConstraint? = nil
         var heightConstraint: NSLayoutConstraint? = nil
         if let _width = width  {

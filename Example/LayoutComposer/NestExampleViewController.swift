@@ -51,7 +51,7 @@ class NestExampleViewController: ExampleViewController {
         let icon = UIImageView(image: UIImage(named: "avatar.jpeg"))
         icon.layer.cornerRadius = 2
         
-        let changeProfileBtn = UIButton.buttonWithType(.System) as! UIButton
+        let changeProfileBtn = UIButton(type: .System)
         changeProfileBtn.setTitle("Update Profile", forState: .Normal)
         changeProfileBtn.layer.borderWidth = 1
         changeProfileBtn.layer.borderColor = UIColor.lightGrayColor().CGColor

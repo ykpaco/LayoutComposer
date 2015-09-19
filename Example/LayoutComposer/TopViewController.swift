@@ -82,8 +82,8 @@ class TopViewController: BaseViewController {
         ])
     }
 
-    private func makeButton(#title: String, action: Selector, tag: Int) -> UIButton {
-        let button = UIButton.buttonWithType(.System) as! UIButton
+    private func makeButton(title title: String, action: Selector, tag: Int) -> UIButton {
+        let button = UIButton(type: .System)
         button.setTitle(title, forState: .Normal)
         button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
         button.tag = tag

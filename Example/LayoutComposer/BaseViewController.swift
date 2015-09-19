@@ -19,8 +19,8 @@ class BaseViewController: UIViewController {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -31,8 +31,7 @@ class BaseViewController: UIViewController {
 class BaseNavigationController: UINavigationController {
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit()
+        fatalError("not supported")
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -64,8 +63,8 @@ class BaseNavigationController: UINavigationController {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue)
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

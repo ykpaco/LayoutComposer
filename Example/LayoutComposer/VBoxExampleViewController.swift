@@ -197,7 +197,7 @@ class VBoxExampleViewController: ExampleViewController {
 
     private func layoutExamplePackStart() {
         let container = UIView()
-        container.backgroundColor = UIColor.lightGrayColor()
+        container.backgroundColor = UIColor.whiteColor()
 
         let view1 = makeItemView(title: "view1", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
@@ -214,7 +214,7 @@ class VBoxExampleViewController: ExampleViewController {
 
     private func layoutExamplePackCenter() {
         let container = UIView()
-        container.backgroundColor = UIColor.lightGrayColor()
+        container.backgroundColor = UIColor.whiteColor()
 
         let view1 = makeItemView(title: "view1", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
@@ -231,7 +231,7 @@ class VBoxExampleViewController: ExampleViewController {
 
     private func layoutExamplePackEnd() {
         let container = UIView()
-        container.backgroundColor = UIColor.lightGrayColor()
+        container.backgroundColor = UIColor.whiteColor()
 
         let view1 = makeItemView(title: "view1", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
@@ -248,7 +248,7 @@ class VBoxExampleViewController: ExampleViewController {
 
     private func layoutExamplePackFit() {
         let container = UIView()
-        container.backgroundColor = UIColor.lightGrayColor()
+        container.backgroundColor = UIColor.whiteColor()
 
         let view1 = makeItemView(title: "view1", color: UIColor.redColor())
         let view2 = makeItemView(title: "view2", color: UIColor.greenColor())

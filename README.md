@@ -277,7 +277,8 @@ pod "LayoutComposer"
 The current release of LayoutComposer supports the following versions of iOS
 
 * Xcode
-  * Language Support: **Swift** *(1.2)*
+  * Language Support: **Swift** *(2.0)*
+  * If you use swift 1.2, checkout swift-1.2 baranch.
 * iOS
   * Minimum Deployment Target: **iOS 7.0**
     * If you set the deployment target iOS 7.X, installation through CocoaPods is not available. You have to install LayoutComposer manually.

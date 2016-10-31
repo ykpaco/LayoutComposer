@@ -27,20 +27,20 @@
 import UIKit
 
 public enum BoxLayoutAlign {
-    case Stretch // Default
-    case Start
-    case Center
-    case End
+    case stretch // Default
+    case start
+    case center
+    case end
 }
 
 public enum BoxLayoutPack {
-    case Start
-    case Center
-    case End
-    case Fit
+    case start
+    case center
+    case end
+    case fit
 }
 
-public class Layout {
+open class Layout {
     let defaultMargins: UIEdgeInsets
 
     public init(defaultMargins: UIEdgeInsets) {
@@ -48,22 +48,22 @@ public class Layout {
     }
 }
 
-public class VBox: Layout {
+open class VBox: Layout {
     let align: BoxLayoutAlign
     let pack: BoxLayoutPack
 
-    public init(align: BoxLayoutAlign = .Stretch, pack: BoxLayoutPack = .Start, defaultMargins: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)) {
+    public init(align: BoxLayoutAlign = .stretch, pack: BoxLayoutPack = .start, defaultMargins: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)) {
         self.align = align
         self.pack = pack
         super.init(defaultMargins: UIEdgeInsetsMake(defaultMargins.0, defaultMargins.1, defaultMargins.2, defaultMargins.3))
     }
 }
 
-public class HBox: Layout {
+open class HBox: Layout {
     let align: BoxLayoutAlign
     let pack: BoxLayoutPack
 
-    public init(align: BoxLayoutAlign = .Stretch, pack: BoxLayoutPack = .Start, defaultMargins: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)) {
+    public init(align: BoxLayoutAlign = .stretch, pack: BoxLayoutPack = .start, defaultMargins: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)) {
         self.align = align
         self.pack = pack
         super.init(defaultMargins: UIEdgeInsetsMake(defaultMargins.0, defaultMargins.1, defaultMargins.2, defaultMargins.3))
@@ -71,50 +71,50 @@ public class HBox: Layout {
 }
 
 public enum RelativeLayoutVAlign {
-    case Top
-    case Center
-    case Bottom
+    case top
+    case center
+    case bottom
 }
 
 public enum RelativeLayoutHAlign {
-    case Left
-    case Center
-    case Right
+    case left
+    case center
+    case right
 }
 
-public class Relative: Layout {
+open class Relative: Layout {
     public init(defaultMargins: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)) {
         super.init(defaultMargins: UIEdgeInsetsMake(defaultMargins.0, defaultMargins.1, defaultMargins.2, defaultMargins.3))
     }
 }
 
-public class Fit: Layout {
+open class Fit: Layout {
     public init(defaultMargins: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)) {
         super.init(defaultMargins: UIEdgeInsetsMake(defaultMargins.0, defaultMargins.1, defaultMargins.2, defaultMargins.3))
     }
 }
 
-public class LayoutComponent {
-    public let view: UIView
-    private var width: CGFloat?
-    private var height: CGFloat?
-    public let flex: CGFloat?
-    public let layout: Layout?
-    public let marginTop: CGFloat?
-    public let marginLeft: CGFloat?
-    public let marginBottom: CGFloat?
-    public let marginRight: CGFloat?
-    public let align: BoxLayoutAlign?
-    public let halign: RelativeLayoutHAlign?
-    public let valign: RelativeLayoutVAlign?
+open class LayoutComponent {
+    open let view: UIView
+    fileprivate var width: CGFloat?
+    fileprivate var height: CGFloat?
+    open let flex: CGFloat?
+    open let layout: Layout?
+    open let marginTop: CGFloat?
+    open let marginLeft: CGFloat?
+    open let marginBottom: CGFloat?
+    open let marginRight: CGFloat?
+    open let align: BoxLayoutAlign?
+    open let halign: RelativeLayoutHAlign?
+    open let valign: RelativeLayoutVAlign?
     var widthConstraintInternal: NSLayoutConstraint?
     var heightConstraintInternal: NSLayoutConstraint?
     
-    public var widthConstraint: NSLayoutConstraint? {
+    open var widthConstraint: NSLayoutConstraint? {
         return widthConstraintInternal
     }
     
-    public var heightConstraint: NSLayoutConstraint? {
+    open var heightConstraint: NSLayoutConstraint? {
         return heightConstraintInternal
     }
 
@@ -152,16 +152,16 @@ public class LayoutComponent {
             self.heightConstraintInternal = heightConstraint
     }
 
-    public func updateWidth(width: CGFloat) {
+    open func updateWidth(_ width: CGFloat) {
         if let constraint = widthConstraintInternal {
             view.removeConstraint(constraint)
         }
         let constraint = NSLayoutConstraint(
             item: view,
-            attribute: .Width,
-            relatedBy: .Equal,
+            attribute: .width,
+            relatedBy: .equal,
             toItem: nil,
-            attribute: .Width,
+            attribute: .width,
             multiplier: 1.0,
             constant: width)
         view.addConstraint(constraint)
@@ -169,16 +169,16 @@ public class LayoutComponent {
         self.width = width
     }
 
-    public func updateHeight(height: CGFloat) {
+    open func updateHeight(_ height: CGFloat) {
         if let constraint = heightConstraintInternal {
             view.removeConstraint(constraint)
         }
         let constraint = NSLayoutConstraint(
             item: view,
-            attribute: .Height,
-            relatedBy: .Equal,
+            attribute: .height,
+            relatedBy: .equal,
             toItem: nil,
-            attribute: .Height,
+            attribute: .height,
             multiplier: 1.0,
             constant: height)
         view.addConstraint(constraint)
@@ -187,57 +187,57 @@ public class LayoutComponent {
     }
 }
 
-public func $(view: UIView?,
+public func $(_ view: UIView?,
     width: CGFloat? = nil,
     height: CGFloat? = nil,
     flex: CGFloat? = nil,
-    layout: Layout? = nil,
+    align: BoxLayoutAlign? = nil,
+    halign: RelativeLayoutHAlign? = nil,
+    valign: RelativeLayoutVAlign? = nil,
     margins: (CGFloat, CGFloat, CGFloat, CGFloat)? = nil,
     marginTop: CGFloat? = nil,
     marginLeft: CGFloat? = nil,
     marginBottom: CGFloat? = nil,
     marginRight: CGFloat? = nil,
-    align: BoxLayoutAlign? = nil,
-    halign: RelativeLayoutHAlign? = nil,
-    valign: RelativeLayoutVAlign? = nil,
+    layout: Layout? = nil,
     item: LayoutComponent) -> LayoutComponent {
 
-        return $(view,
+    return $(view,
             width: width,
             height: height,
             flex: flex,
-            layout: layout,
+            align: align,
+            halign: halign,
+            valign: valign,
             margins: margins,
             marginTop: marginTop,
             marginLeft: marginLeft,
             marginBottom: marginBottom,
             marginRight: marginRight,
-            align: align,
-            halign: halign,
-            valign: valign,
+            layout: layout,
             items: [item])
 }
 
 // Create a new layouted view or apply layout to view.
-public func $(view: UIView?,
+public func $(_ view: UIView?,
     width: CGFloat? = nil,
     height: CGFloat? = nil,
     flex: CGFloat? = nil,
-    layout: Layout? = nil,
+    align: BoxLayoutAlign? = nil,
+    halign: RelativeLayoutHAlign? = nil,
+    valign: RelativeLayoutVAlign? = nil,
     margins: (CGFloat, CGFloat, CGFloat, CGFloat)? = nil,
     marginTop: CGFloat? = nil,
     marginLeft: CGFloat? = nil,
     marginBottom: CGFloat? = nil,
     marginRight: CGFloat? = nil,
-    align: BoxLayoutAlign? = nil,
-    halign: RelativeLayoutHAlign? = nil,
-    valign: RelativeLayoutVAlign? = nil,
+    layout: Layout? = nil,
     items: [LayoutComponent]? = nil) -> LayoutComponent {
 
         let container = view ?? UIView()
         let (widthConstraint, heightConstraint) = container.setSizeConstraint(width:width, height: height)
 
-        if let _layout = layout, _items = items {
+        if let _layout = layout, let _items = items {
             switch _layout {
             case let vbox as VBox:
                  addItemsToContainerWithVBox(container, layout: vbox, items: _items)
@@ -268,7 +268,7 @@ public func $(view: UIView?,
             heightConstraint: heightConstraint)
 }
 
-private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items: [LayoutComponent]) {
+private func addItemsToContainerWithVBox(_ container: UIView, layout: VBox, items: [LayoutComponent]) {
     var minFlex:CGFloat?
     var minFlexItem: LayoutComponent?
     for item in items {
@@ -288,17 +288,17 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
         item.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    if minFlexItem != nil && minFlex != nil || layout.pack == .Fit {
+    if minFlexItem != nil && minFlex != nil || layout.pack == .fit {
         // if pack attribute is set to Fit, or the item's flex is set,
         // the container height is adjusted to contain the items.
         if let firstItem = items.first {
             let topMargin:CGFloat = firstItem.marginTop ?? layout.defaultMargins.top
             let leadingConstraint = NSLayoutConstraint(
                 item: firstItem.view,
-                attribute: .Top,
-                relatedBy: .Equal,
+                attribute: .top,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Top,
+                attribute: .top,
                 multiplier: 1.0,
                 constant: topMargin)
             container.addConstraint(leadingConstraint)
@@ -307,55 +307,55 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
             let bottomMargin:CGFloat = lastItem.marginBottom ?? layout.defaultMargins.bottom
             let trailingConstraint = NSLayoutConstraint(
                 item: lastItem.view,
-                attribute: .Bottom,
-                relatedBy: .Equal,
+                attribute: .bottom,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Bottom,
+                attribute: .bottom,
                 multiplier: 1.0,
                 constant: -bottomMargin)
             container.addConstraint(trailingConstraint)
         }
     }
-    else if layout.pack == .Start {
+    else if layout.pack == .start {
         // Top aligned.
         if let firstItem = items.first {
             let topMargin:CGFloat = firstItem.marginTop ?? layout.defaultMargins.top
             let leadingConstraint = NSLayoutConstraint(
                 item: firstItem.view,
-                attribute: .Top,
-                relatedBy: .Equal,
+                attribute: .top,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Top,
+                attribute: .top,
                 multiplier: 1.0,
                 constant: topMargin)
             container.addConstraint(leadingConstraint)
         }
     }
-    else if layout.pack == .End {
+    else if layout.pack == .end {
         // Bottom aligned.
         if let lastItem = items.last {
             let bottomMargin:CGFloat = lastItem.marginBottom ?? layout.defaultMargins.bottom
             let trailingConstraint = NSLayoutConstraint(
                 item: lastItem.view,
-                attribute: .Bottom,
-                relatedBy: .Equal,
+                attribute: .bottom,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Bottom,
+                attribute: .bottom,
                 multiplier: 1.0,
                 constant: -bottomMargin)
             container.addConstraint(trailingConstraint)
         }
     }
-    else if layout.pack == .Center {
+    else if layout.pack == .center {
         // insert spacers of the same height to add mergins to above and below the items.
         let topSpacer = createTopSpacer(container)
         let bottomSpacer = createBottomSpacer(container)
         let equalHeightSpacerConstraint = NSLayoutConstraint(
             item: bottomSpacer,
-            attribute: .Height,
-            relatedBy: .Equal,
+            attribute: .height,
+            relatedBy: .equal,
             toItem: topSpacer,
-            attribute: .Height,
+            attribute: .height,
             multiplier: 1.0,
             constant: 0.0)
         container.addConstraint(equalHeightSpacerConstraint)
@@ -363,10 +363,10 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
         if let firstItem = items.first {
             let leadingConstraint = NSLayoutConstraint(
                 item: firstItem.view,
-                attribute: .Top,
-                relatedBy: .Equal,
+                attribute: .top,
+                relatedBy: .equal,
                 toItem: topSpacer,
-                attribute: .Bottom,
+                attribute: .bottom,
                 multiplier: 1.0,
                 constant: 0.0)
             container.addConstraint(leadingConstraint)
@@ -374,10 +374,10 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
         if let lastItem = items.last {
             let trailingConstraint = NSLayoutConstraint(
                 item: lastItem.view,
-                attribute: .Bottom,
-                relatedBy: .Equal,
+                attribute: .bottom,
+                relatedBy: .equal,
                 toItem: bottomSpacer,
-                attribute: .Top,
+                attribute: .top,
                 multiplier: 1.0,
                 constant: 0.0)
             container.addConstraint(trailingConstraint)
@@ -388,14 +388,14 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
     for item in items {
         // Flex settings.
         if let flex = item.flex {
-            if let _minFlexItem = minFlexItem, _minFlex = minFlex {
+            if let _minFlexItem = minFlexItem, let _minFlex = minFlex {
                 if item !== _minFlexItem {
                     let sizeRatioConstraint = NSLayoutConstraint(
                         item: item.view,
-                        attribute: .Height,
-                        relatedBy: .Equal,
+                        attribute: .height,
+                        relatedBy: .equal,
                         toItem: _minFlexItem.view,
-                        attribute: .Height,
+                        attribute: .height,
                         multiplier: CGFloat(flex/_minFlex),
                         constant:0.0)
                     container.addConstraint(sizeRatioConstraint)
@@ -407,10 +407,10 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
             let topMargin:CGFloat = (_prevItem.marginBottom ?? layout.defaultMargins.bottom) + (item.marginTop ?? layout.defaultMargins.top)
             let leadingConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .Top,
-                relatedBy: .Equal,
+                attribute: .top,
+                relatedBy: .equal,
                 toItem: _prevItem.view,
-                attribute: .Bottom,
+                attribute: .bottom,
                 multiplier: 1.0,
                 constant: topMargin)
             container.addConstraint(leadingConstraint)
@@ -419,52 +419,52 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
         // Alignent.
         // Start: Left aligned, Center: Center aligned, End: Right aligned.
         let align = item.align ?? layout.align
-        if align == .Start {
+        if align == .start {
             let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
             let leftConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .Left,
-                relatedBy: .Equal,
+                attribute: .left,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Left,
+                attribute: .left,
                 multiplier: 1.0,
                 constant: leftMargin)
             container.addConstraint(leftConstraint)
         }
-        else if align == .End {
+        else if align == .end {
             let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
             let rightConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .Right,
-                relatedBy: .Equal,
+                attribute: .right,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Right,
+                attribute: .right,
                 multiplier: 1.0,
                 constant: -rightMargin)
             container.addConstraint(rightConstraint)
         }
-        else if align == .Center {
+        else if align == .center {
             let centerConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .CenterX,
-                relatedBy: .Equal,
+                attribute: .centerX,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .CenterX,
+                attribute: .centerX,
                 multiplier: 1.0,
                 constant: 0.0)
             container.addConstraint(centerConstraint)
         }
-        else if align == .Stretch {
+        else if align == .stretch {
             if let _ = getWidthConstraintOfView(item.view) {
                 //
                 // if width constraint is set, align centered.
                 //
                 let centerConstraint = NSLayoutConstraint(
                     item: item.view,
-                    attribute: .CenterX,
-                    relatedBy: .Equal,
+                    attribute: .centerX,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .CenterX,
+                    attribute: .centerX,
                     multiplier: 1.0,
                     constant: 0.0)
                 container.addConstraint(centerConstraint)
@@ -476,20 +476,20 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
                 let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
                 let leftConstraint = NSLayoutConstraint(
                     item: item.view,
-                    attribute: .Left,
-                    relatedBy: .Equal,
+                    attribute: .left,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Left,
+                    attribute: .left,
                     multiplier: 1.0,
                     constant: leftMargin)
                 
                 let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
                 let rightConstraint = NSLayoutConstraint(
                     item: item.view,
-                    attribute: .Right,
-                    relatedBy: .Equal,
+                    attribute: .right,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Right,
+                    attribute: .right,
                     multiplier: 1.0,
                     constant: -rightMargin)
                 
@@ -500,7 +500,7 @@ private func addItemsToContainerWithVBox(container: UIView, layout: VBox, items:
     }
 }
 
-private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items: [LayoutComponent]) {
+private func addItemsToContainerWithHBox(_ container: UIView, layout: HBox, items: [LayoutComponent]) {
     var minFlex:CGFloat?
     var minFlexItem: LayoutComponent?
     for item in items {
@@ -520,17 +520,17 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
         item.view.translatesAutoresizingMaskIntoConstraints = false
     }
 
-    if minFlexItem != nil && minFlex != nil || layout.pack == .Fit {
+    if minFlexItem != nil && minFlex != nil || layout.pack == .fit {
         // if pack attribute is set to Fit, or the item's flex is set,
         // the container width is adjusted to contain the items.
         if let firstItem = items.first {
             let leftMargin:CGFloat = firstItem.marginLeft ?? layout.defaultMargins.left
             let leadingConstraint = NSLayoutConstraint(
                 item: firstItem.view,
-                attribute: .Left,
-                relatedBy: .Equal,
+                attribute: .left,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Left,
+                attribute: .left,
                 multiplier: 1.0,
                 constant: leftMargin)
             container.addConstraint(leadingConstraint)
@@ -539,55 +539,55 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
             let rightMargin:CGFloat = lastItem.marginRight ?? layout.defaultMargins.right
             let trailingConstraint = NSLayoutConstraint(
                 item: lastItem.view,
-                attribute: .Right,
-                relatedBy: .Equal,
+                attribute: .right,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Right,
+                attribute: .right,
                 multiplier: 1.0,
                 constant: -rightMargin)
             container.addConstraint(trailingConstraint)
         }
     }
-    else if layout.pack == .Start {
+    else if layout.pack == .start {
         // Left aligned.
         if let firstItem = items.first {
             let leftMargin:CGFloat = firstItem.marginLeft ?? layout.defaultMargins.left
             let leadingConstraint = NSLayoutConstraint(
                 item: firstItem.view,
-                attribute: .Left,
-                relatedBy: .Equal,
+                attribute: .left,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Left,
+                attribute: .left,
                 multiplier: 1.0,
                 constant: leftMargin)
             container.addConstraint(leadingConstraint)
         }
     }
-    else if layout.pack == .End {
+    else if layout.pack == .end {
         // Right aligned.
         if let lastItem = items.last {
             let rightMargin:CGFloat = lastItem.marginRight ?? layout.defaultMargins.right
             let trailingConstraint = NSLayoutConstraint(
                 item: lastItem.view,
-                attribute: .Right,
-                relatedBy: .Equal,
+                attribute: .right,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Right,
+                attribute: .right,
                 multiplier: 1.0,
                 constant: -rightMargin)
             container.addConstraint(trailingConstraint)
         }
     }
-    else if layout.pack == .Center {
+    else if layout.pack == .center {
         // insert spacers of the same width to add mergins to left and right to the items.
         let leftSpacer = createLeftSpacer(container)
         let rightSpacer = createRightSpacer(container)
         let equalWidthSpacerConstraint = NSLayoutConstraint(
             item: leftSpacer,
-            attribute: .Width,
-            relatedBy: .Equal,
+            attribute: .width,
+            relatedBy: .equal,
             toItem: rightSpacer,
-            attribute: .Width,
+            attribute: .width,
             multiplier: 1.0,
             constant: 0.0)
         container.addConstraint(equalWidthSpacerConstraint)
@@ -595,10 +595,10 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
         if let firstItem = items.first {
             let leadingConstraint = NSLayoutConstraint(
                 item: firstItem.view,
-                attribute: .Left,
-                relatedBy: .Equal,
+                attribute: .left,
+                relatedBy: .equal,
                 toItem: leftSpacer,
-                attribute: .Right,
+                attribute: .right,
                 multiplier: 1.0,
                 constant: 0.0)
             container.addConstraint(leadingConstraint)
@@ -606,10 +606,10 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
         if let lastItem = items.last {
             let trailingConstraint = NSLayoutConstraint(
                 item: lastItem.view,
-                attribute: .Right,
-                relatedBy: .Equal,
+                attribute: .right,
+                relatedBy: .equal,
                 toItem: rightSpacer,
-                attribute: .Left,
+                attribute: .left,
                 multiplier: 1.0,
                 constant: 0.0)
             container.addConstraint(trailingConstraint)
@@ -620,14 +620,14 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
     for item in items {
         // Flex settings.
         if let flex = item.flex {
-            if let _minFlexItem = minFlexItem, _minFlex = minFlex {
+            if let _minFlexItem = minFlexItem, let _minFlex = minFlex {
                 if item !== _minFlexItem {
                     let sizeRatioConstraint = NSLayoutConstraint(
                         item: item.view,
-                        attribute: .Width,
-                        relatedBy: .Equal,
+                        attribute: .width,
+                        relatedBy: .equal,
                         toItem: _minFlexItem.view,
-                        attribute: .Width,
+                        attribute: .width,
                         multiplier: CGFloat(flex/_minFlex),
                         constant:0.0)
                     container.addConstraint(sizeRatioConstraint)
@@ -639,10 +639,10 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
             let leftMargin:CGFloat = (_prevItem.marginRight ?? layout.defaultMargins.right) + (item.marginLeft ?? layout.defaultMargins.left)
             let leadingConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .Left,
-                relatedBy: .Equal,
+                attribute: .left,
+                relatedBy: .equal,
                 toItem: _prevItem.view,
-                attribute: .Right,
+                attribute: .right,
                 multiplier: 1.0,
                 constant: leftMargin)
             container.addConstraint(leadingConstraint)
@@ -651,52 +651,52 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
         // Align の設定.
         // Start: Left aligned, Center: Center aligned, End: Right aligned.
         let align = item.align ?? layout.align
-        if align == .Start {
+        if align == .start {
             let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
             let topConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .Top,
-                relatedBy: .Equal,
+                attribute: .top,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Top,
+                attribute: .top,
                 multiplier: 1.0,
                 constant: topMargin)
             container.addConstraint(topConstraint)
         }
-        else if align == .End {
+        else if align == .end {
             let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
             let bottomConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .Bottom,
-                relatedBy: .Equal,
+                attribute: .bottom,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .Bottom,
+                attribute: .bottom,
                 multiplier: 1.0,
                 constant: -bottomMargin)
             container.addConstraint(bottomConstraint)
         }
-        else if align == .Center {
+        else if align == .center {
             let centerConstraint = NSLayoutConstraint(
                 item: item.view,
-                attribute: .CenterY,
-                relatedBy: .Equal,
+                attribute: .centerY,
+                relatedBy: .equal,
                 toItem: container,
-                attribute: .CenterY,
+                attribute: .centerY,
                 multiplier: 1.0,
                 constant: 0.0)
             container.addConstraint(centerConstraint)
         }
-        else if align == .Stretch {
+        else if align == .stretch {
             if let _ = getHeightConstraintOfView(item.view) {
                 //
                 // if height constraint is set, align centered.
                 //
                 let centerConstraint = NSLayoutConstraint(
                     item: item.view,
-                    attribute: .CenterY,
-                    relatedBy: .Equal,
+                    attribute: .centerY,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .CenterY,
+                    attribute: .centerY,
                     multiplier: 1.0,
                     constant: 0.0)
                 container.addConstraint(centerConstraint)
@@ -708,20 +708,20 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
                 let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
                 let topConstraint = NSLayoutConstraint(
                     item: item.view,
-                    attribute: .Top,
-                    relatedBy: .Equal,
+                    attribute: .top,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Top,
+                    attribute: .top,
                     multiplier: 1.0,
                     constant: topMargin)
                 
                 let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
                 let bottomConstraint = NSLayoutConstraint(
                     item: item.view,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
+                    attribute: .bottom,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Bottom,
+                    attribute: .bottom,
                     multiplier: 1.0,
                     constant: -bottomMargin)
                 
@@ -732,7 +732,7 @@ private func addItemsToContainerWithHBox(container: UIView, layout: HBox, items:
     }
 }
 
-private func addItemsToContainerWithRelative(container: UIView, layout: Relative, items: [LayoutComponent]) {
+private func addItemsToContainerWithRelative(_ container: UIView, layout: Relative, items: [LayoutComponent]) {
     for item in items {
         let view = item.view
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -743,33 +743,33 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
 
             let hconstraint: NSLayoutConstraint
             switch halign {
-            case .Left:
+            case .left:
                 let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
                 hconstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Left,
-                    relatedBy: .Equal,
+                    attribute: .left,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Left,
+                    attribute: .left,
                     multiplier: 1.0,
                     constant: leftMargin)
-            case .Right:
+            case .right:
                 let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
                 hconstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Right,
-                    relatedBy: .Equal,
+                    attribute: .right,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Right,
+                    attribute: .right,
                     multiplier: 1.0,
                     constant: -rightMargin)
-            case .Center:
+            case .center:
                 hconstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .CenterX,
-                    relatedBy: .Equal,
+                    attribute: .centerX,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .CenterX,
+                    attribute: .centerX,
                     multiplier: 1.0,
                     constant: 0)
             }
@@ -783,10 +783,10 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
                 // align centered is with constraint is set.
                 let centerXConstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .CenterX,
-                    relatedBy: .Equal,
+                    attribute: .centerX,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .CenterX,
+                    attribute: .centerX,
                     multiplier: 1.0,
                     constant: 0)
                 container.addConstraint(centerXConstraint)
@@ -796,20 +796,20 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
                 let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
                 let leftConstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Left,
-                    relatedBy: .Equal,
+                    attribute: .left,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Left,
+                    attribute: .left,
                     multiplier: 1.0,
                     constant: leftMargin)
                 
                 let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
                 let rightConstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Right,
-                    relatedBy: .Equal,
+                    attribute: .right,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Right,
+                    attribute: .right,
                     multiplier: 1.0,
                     constant: -rightMargin)
                 container.addConstraints([leftConstraint, rightConstraint])
@@ -819,33 +819,33 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
         if let valign = item.valign {
             let vconstraint: NSLayoutConstraint
             switch valign {
-            case .Top:
+            case .top:
                 let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
                 vconstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Top,
-                    relatedBy: .Equal,
+                    attribute: .top,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Top,
+                    attribute: .top,
                     multiplier: 1.0,
                     constant: topMargin)
-            case .Bottom:
+            case .bottom:
                 let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
                 vconstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
+                    attribute: .bottom,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Bottom,
+                    attribute: .bottom,
                     multiplier: 1.0,
                     constant: -bottomMargin)
-            case .Center:
+            case .center:
                 vconstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .CenterY,
-                    relatedBy: .Equal,
+                    attribute: .centerY,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .CenterY,
+                    attribute: .centerY,
                     multiplier: 1.0,
                     constant: 0)
             }
@@ -859,10 +859,10 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
                 // align centered is with constraint is set.
                 let centerYConstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .CenterY,
-                    relatedBy: .Equal,
+                    attribute: .centerY,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .CenterY,
+                    attribute: .centerY,
                     multiplier: 1.0,
                     constant: 0)
                 container.addConstraint(centerYConstraint)
@@ -872,20 +872,20 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
                 let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
                 let topConstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Top,
-                    relatedBy: .Equal,
+                    attribute: .top,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Top,
+                    attribute: .top,
                     multiplier: 1.0,
                     constant: topMargin)
                 
                 let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
                 let bottomConstraint = NSLayoutConstraint(
                     item: view,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
+                    attribute: .bottom,
+                    relatedBy: .equal,
                     toItem: container,
-                    attribute: .Bottom,
+                    attribute: .bottom,
                     multiplier: 1.0,
                     constant: -bottomMargin)
                 container.addConstraints([topConstraint, bottomConstraint])
@@ -894,81 +894,81 @@ private func addItemsToContainerWithRelative(container: UIView, layout: Relative
     }
 }
 
-private func addItemsToContainerWithFit(container: UIView, layout: Fit, items: [LayoutComponent]) {
+private func addItemsToContainerWithFit(_ container: UIView, layout: Fit, items: [LayoutComponent]) {
     for item in items {
         container.addSubview(item.view)
         item.view.translatesAutoresizingMaskIntoConstraints = false
         let leftMargin:CGFloat = item.marginLeft ?? layout.defaultMargins.left
         let leftConstraint = NSLayoutConstraint(
             item: item.view,
-            attribute: .Left,
-            relatedBy: .Equal,
+            attribute: .left,
+            relatedBy: .equal,
             toItem: container,
-            attribute: .Left,
+            attribute: .left,
             multiplier: 1.0,
             constant: leftMargin)
 
         let rightMargin:CGFloat = item.marginRight ?? layout.defaultMargins.right
         let rightConstraint = NSLayoutConstraint(
             item: item.view,
-            attribute: .Right,
-            relatedBy: .Equal,
+            attribute: .right,
+            relatedBy: .equal,
             toItem: container,
-            attribute: .Right,
+            attribute: .right,
             multiplier: 1.0,
             constant: -rightMargin)
 
         let topMargin:CGFloat = item.marginTop ?? layout.defaultMargins.top
         let topConstraint = NSLayoutConstraint(
             item: item.view,
-            attribute: .Top,
-            relatedBy: .Equal,
+            attribute: .top,
+            relatedBy: .equal,
             toItem: container,
-            attribute: .Top,
+            attribute: .top,
             multiplier: 1.0,
             constant: topMargin)
 
         let bottomMargin:CGFloat = item.marginBottom ?? layout.defaultMargins.bottom
         let bottomConstraint = NSLayoutConstraint(
             item: item.view,
-            attribute: .Bottom,
-            relatedBy: .Equal,
+            attribute: .bottom,
+            relatedBy: .equal,
             toItem: container,
-            attribute: .Bottom,
+            attribute: .bottom,
             multiplier: 1.0,
             constant: -bottomMargin)
         container.addConstraints([leftConstraint, rightConstraint, topConstraint, bottomConstraint])
     }
 }
 
-private func createTopSpacer(container: UIView) -> UIView {
+private func createTopSpacer(_ container: UIView) -> UIView {
     let topSpacer = UIView()
-    topSpacer.userInteractionEnabled = false
+    topSpacer.isUserInteractionEnabled = false
     container.addSubview(topSpacer)
     topSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let topConstraint = NSLayoutConstraint(
         item: topSpacer,
-        attribute: .Top,
-        relatedBy: .Equal,
+        attribute: .top,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Top,
+        attribute: .top,
         multiplier: 1.0,
         constant: 0.0)
     let leftConstraint = NSLayoutConstraint(
         item: topSpacer,
-        attribute: .Left,
-        relatedBy: .Equal,
+        attribute: .left,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Left,
+        attribute: .left,
         multiplier: 1.0,
         constant: 0.0)
     let rightConstraint = NSLayoutConstraint(
         item: topSpacer,
-        attribute: .Right,
-        relatedBy: .Equal,
+        attribute: .right,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Right,
+        attribute: .right,
         multiplier: 1.0,
         constant: 0.0)
 
@@ -976,34 +976,34 @@ private func createTopSpacer(container: UIView) -> UIView {
     return topSpacer
 }
 
-private func createBottomSpacer(container: UIView) -> UIView {
+private func createBottomSpacer(_ container: UIView) -> UIView {
     let bottomSpacer = UIView()
-    bottomSpacer.userInteractionEnabled = false
+    bottomSpacer.isUserInteractionEnabled = false
     container.addSubview(bottomSpacer)
     bottomSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let bottomConstraint = NSLayoutConstraint(
         item: bottomSpacer,
-        attribute: .Bottom,
-        relatedBy: .Equal,
+        attribute: .bottom,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Bottom,
+        attribute: .bottom,
         multiplier: 1.0,
         constant: 0.0)
     let leftConstraint = NSLayoutConstraint(
         item: bottomSpacer,
-        attribute: .Left,
-        relatedBy: .Equal,
+        attribute: .left,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Left,
+        attribute: .left,
         multiplier: 1.0,
         constant: 0.0)
     let rightConstraint = NSLayoutConstraint(
         item: bottomSpacer,
-        attribute: .Right,
-        relatedBy: .Equal,
+        attribute: .right,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Right,
+        attribute: .right,
         multiplier: 1.0,
         constant: 0.0)
 
@@ -1011,34 +1011,34 @@ private func createBottomSpacer(container: UIView) -> UIView {
     return bottomSpacer
 }
 
-private func createLeftSpacer(container: UIView) -> UIView {
+private func createLeftSpacer(_ container: UIView) -> UIView {
     let leftSpacer = UIView()
-    leftSpacer.userInteractionEnabled = false
+    leftSpacer.isUserInteractionEnabled = false
     container.addSubview(leftSpacer)
     leftSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let leftConstraint = NSLayoutConstraint(
         item: leftSpacer,
-        attribute: .Left,
-        relatedBy: .Equal,
+        attribute: .left,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Left,
+        attribute: .left,
         multiplier: 1.0,
         constant: 0.0)
     let topConstraint = NSLayoutConstraint(
         item: leftSpacer,
-        attribute: .Top,
-        relatedBy: .Equal,
+        attribute: .top,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Top,
+        attribute: .top,
         multiplier: 1.0,
         constant: 0.0)
     let bottomConstraint = NSLayoutConstraint(
         item: leftSpacer,
-        attribute: .Bottom,
-        relatedBy: .Equal,
+        attribute: .bottom,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Bottom,
+        attribute: .bottom,
         multiplier: 1.0,
         constant: 0.0)
 
@@ -1046,34 +1046,34 @@ private func createLeftSpacer(container: UIView) -> UIView {
     return leftSpacer
 }
 
-private func createRightSpacer(container: UIView) -> UIView {
+private func createRightSpacer(_ container: UIView) -> UIView {
     let rightSpacer = UIView()
-    rightSpacer.userInteractionEnabled = false
+    rightSpacer.isUserInteractionEnabled = false
     container.addSubview(rightSpacer)
     rightSpacer.translatesAutoresizingMaskIntoConstraints = false
 
     let rightConstraint = NSLayoutConstraint(
         item: rightSpacer,
-        attribute: .Right,
-        relatedBy: .Equal,
+        attribute: .right,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Right,
+        attribute: .right,
         multiplier: 1.0,
         constant: 0.0)
     let topConstraint = NSLayoutConstraint(
         item: rightSpacer,
-        attribute: .Top,
-        relatedBy: .Equal,
+        attribute: .top,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Top,
+        attribute: .top,
         multiplier: 1.0,
         constant: 0.0)
     let bottomConstraint = NSLayoutConstraint(
         item: rightSpacer,
-        attribute: .Bottom,
-        relatedBy: .Equal,
+        attribute: .bottom,
+        relatedBy: .equal,
         toItem: container,
-        attribute: .Bottom,
+        attribute: .bottom,
         multiplier: 1.0,
         constant: 0.0)
 
@@ -1081,18 +1081,18 @@ private func createRightSpacer(container: UIView) -> UIView {
     return rightSpacer
 }
 
-private func getWidthConstraintOfView(view: UIView) -> NSLayoutConstraint? {
+private func getWidthConstraintOfView(_ view: UIView) -> NSLayoutConstraint? {
     for constraint in view.constraints {
-        if constraint.firstItem === view && constraint.firstAttribute == .Width {
+        if constraint.firstItem === view && constraint.firstAttribute == .width {
             return constraint
         }
     }
     return nil
 }
 
-private func getHeightConstraintOfView(view: UIView) -> NSLayoutConstraint? {
+private func getHeightConstraintOfView(_ view: UIView) -> NSLayoutConstraint? {
     for constraint in view.constraints {
-        if constraint.firstItem === view && constraint.firstAttribute == .Height {
+        if constraint.firstItem === view && constraint.firstAttribute == .height {
             return constraint
         }
     }
@@ -1100,24 +1100,27 @@ private func getHeightConstraintOfView(view: UIView) -> NSLayoutConstraint? {
 }
 
 public extension UIView {
-    public func applyLayout(layout: Layout, items: [LayoutComponent]) -> LayoutComponent {
+    @discardableResult
+    public func applyLayout(_ layout: Layout, items: [LayoutComponent]) -> LayoutComponent {
         return $(self, layout: layout, items: items)
     }
 
-    public func applyLayout(layout: Layout, item: LayoutComponent) -> LayoutComponent {
+    @discardableResult
+    public func applyLayout(_ layout: Layout, item: LayoutComponent) -> LayoutComponent {
         return $(self, layout: layout, item: item)
     }
 
-    public func setSizeConstraint(width width: CGFloat?, height: CGFloat?) -> (NSLayoutConstraint?, NSLayoutConstraint?) {
+    @discardableResult
+    public func setSizeConstraint(width: CGFloat?, height: CGFloat?) -> (NSLayoutConstraint?, NSLayoutConstraint?) {
         var widthConstraint: NSLayoutConstraint? = nil
         var heightConstraint: NSLayoutConstraint? = nil
         if let _width = width  {
             widthConstraint = NSLayoutConstraint(
                 item: self,
-                attribute: .Width,
-                relatedBy: .Equal,
+                attribute: .width,
+                relatedBy: .equal,
                 toItem: nil,
-                attribute: .Width,
+                attribute: .width,
                 multiplier: 1.0,
                 constant: _width)
             self.addConstraint(widthConstraint!)
@@ -1125,10 +1128,10 @@ public extension UIView {
         if let _height = height {
             heightConstraint = NSLayoutConstraint(
                 item: self,
-                attribute: .Height,
-                relatedBy: .Equal,
+                attribute: .height,
+                relatedBy: .equal,
                 toItem: nil,
-                attribute: .Height,
+                attribute: .height,
                 multiplier: 1.0,
                 constant: _height)
             self.addConstraint(heightConstraint!)

@@ -25,110 +25,110 @@ class TopViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func doLayout() {
+    fileprivate func doLayout() {
         view = UIView()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
 
         let header = UIView()
-        header.backgroundColor = UIColor.blackColor()
+        header.backgroundColor = UIColor.black
 
         let titleLabel = UILabel()
         titleLabel.text = "LayoutComposer Examples"
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
 
         let scrollView = UIScrollView()
 
         view.applyLayout(VBox(), items: [
             $(header, height: 65, layout: Relative(), item:
-                $(titleLabel, halign: .Center, marginTop: 20)
+                $(titleLabel, halign: .center, marginTop: 20)
             ),
-            $(scrollView, flex: 1, layout: VBox(align: .Center, pack: .Fit, defaultMargins: (10, 0, 0, 0)), items: [
-                $(makeButton(title: "VBox Basic", action: "onVBoxExampleTapped:", tag: VBoxExampleType.Basic.rawValue)),
-                $(makeButton(title: "VBox Margin", action: "onVBoxExampleTapped:", tag: VBoxExampleType.Margin.rawValue)),
-                $(makeButton(title: "VBox Default Margin", action: "onVBoxExampleTapped:", tag: VBoxExampleType.DefaultMargin.rawValue)),
-                $(makeButton(title: "VBox Flex Height", action: "onVBoxExampleTapped:", tag: VBoxExampleType.Flex.rawValue)),
-                $(makeButton(title: "VBox Align Start(Left)", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignStart.rawValue)),
-                $(makeButton(title: "VBox Align End(Right)", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignEnd.rawValue)),
-                $(makeButton(title: "VBox Align Center", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignCenter.rawValue)),
-                $(makeButton(title: "VBox Align Stretch", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignStretch.rawValue)),
-                $(makeButton(title: "VBox Align Each Component", action: "onVBoxExampleTapped:", tag: VBoxExampleType.AlignEachComponent.rawValue)),
-                $(makeButton(title: "VBox Pack Start(Top)", action: "onVBoxExampleTapped:", tag: VBoxExampleType.PackStart.rawValue)),
-                $(makeButton(title: "VBox Pack End(Bottom)", action: "onVBoxExampleTapped:", tag: VBoxExampleType.PackEnd.rawValue)),
-                $(makeButton(title: "VBox Pack Center", action: "onVBoxExampleTapped:", tag: VBoxExampleType.PackCenter.rawValue)),
-                $(makeButton(title: "VBox Pack Fit", action: "onVBoxExampleTapped:", tag: VBoxExampleType.PackFit.rawValue)),
+            $(scrollView, flex: 1, layout: VBox(align: .center, pack: .fit, defaultMargins: (10, 0, 0, 0)), items: [
+                $(makeButton(title: "VBox Basic", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.basic.rawValue)),
+                $(makeButton(title: "VBox Margin", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.margin.rawValue)),
+                $(makeButton(title: "VBox Default Margin", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.defaultMargin.rawValue)),
+                $(makeButton(title: "VBox Flex Height", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.flex.rawValue)),
+                $(makeButton(title: "VBox Align Start(Left)", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.alignStart.rawValue)),
+                $(makeButton(title: "VBox Align End(Right)", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.alignEnd.rawValue)),
+                $(makeButton(title: "VBox Align Center", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.alignCenter.rawValue)),
+                $(makeButton(title: "VBox Align Stretch", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.alignStretch.rawValue)),
+                $(makeButton(title: "VBox Align Each Component", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.alignEachComponent.rawValue)),
+                $(makeButton(title: "VBox Pack Start(Top)", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.packStart.rawValue)),
+                $(makeButton(title: "VBox Pack End(Bottom)", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.packEnd.rawValue)),
+                $(makeButton(title: "VBox Pack Center", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.packCenter.rawValue)),
+                $(makeButton(title: "VBox Pack Fit", action: #selector(TopViewController.onVBoxExampleTapped(_:)), tag: VBoxExampleType.packFit.rawValue)),
 
-                $(makeButton(title: "HBox Basic", action: "onHBoxExampleTapped:", tag: HBoxExampleType.Basic.rawValue)),
-                $(makeButton(title: "HBox Margin", action: "onHBoxExampleTapped:", tag: HBoxExampleType.Margin.rawValue)),
-                $(makeButton(title: "HBox Default Margin", action: "onHBoxExampleTapped:", tag: HBoxExampleType.DefaultMargin.rawValue)),
-                $(makeButton(title: "HBox Flex Width", action: "onHBoxExampleTapped:", tag: HBoxExampleType.Flex.rawValue)),
-                $(makeButton(title: "HBox Align Start(Top)", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignStart.rawValue)),
-                $(makeButton(title: "HBox Align End(Bottom)", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignEnd.rawValue)),
-                $(makeButton(title: "HBox Align Center", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignCenter.rawValue)),
-                $(makeButton(title: "HBox Align Stretch", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignStretch.rawValue)),
-                $(makeButton(title: "HBox Align Each Component", action: "onHBoxExampleTapped:", tag: HBoxExampleType.AlignEachComponent.rawValue)),
-                $(makeButton(title: "HBox Pack Start(Left)", action: "onHBoxExampleTapped:", tag: HBoxExampleType.PackStart.rawValue)),
-                $(makeButton(title: "HBox Pack End(Right)", action: "onHBoxExampleTapped:", tag: HBoxExampleType.PackEnd.rawValue)),
-                $(makeButton(title: "HBox Pack Center", action: "onHBoxExampleTapped:", tag: HBoxExampleType.PackCenter.rawValue)),
-                $(makeButton(title: "HBox Pack Fit", action: "onHBoxExampleTapped:", tag: HBoxExampleType.PackFit.rawValue)),
+                $(makeButton(title: "HBox Basic", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.basic.rawValue)),
+                $(makeButton(title: "HBox Margin", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.margin.rawValue)),
+                $(makeButton(title: "HBox Default Margin", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.defaultMargin.rawValue)),
+                $(makeButton(title: "HBox Flex Width", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.flex.rawValue)),
+                $(makeButton(title: "HBox Align Start(Top)", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.alignStart.rawValue)),
+                $(makeButton(title: "HBox Align End(Bottom)", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.alignEnd.rawValue)),
+                $(makeButton(title: "HBox Align Center", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.alignCenter.rawValue)),
+                $(makeButton(title: "HBox Align Stretch", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.alignStretch.rawValue)),
+                $(makeButton(title: "HBox Align Each Component", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.alignEachComponent.rawValue)),
+                $(makeButton(title: "HBox Pack Start(Left)", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.packStart.rawValue)),
+                $(makeButton(title: "HBox Pack End(Right)", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.packEnd.rawValue)),
+                $(makeButton(title: "HBox Pack Center", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.packCenter.rawValue)),
+                $(makeButton(title: "HBox Pack Fit", action: #selector(TopViewController.onHBoxExampleTapped(_:)), tag: HBoxExampleType.packFit.rawValue)),
                 
-                $(makeButton(title: "Relative 1", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example1.rawValue)),
-                $(makeButton(title: "Relative 2", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example2.rawValue)),
-                $(makeButton(title: "Relative 3", action: "onRelativeExampleTapped:", tag: RelativeExampleType.Example3.rawValue)),
+                $(makeButton(title: "Relative 1", action: #selector(TopViewController.onRelativeExampleTapped(_:)), tag: RelativeExampleType.example1.rawValue)),
+                $(makeButton(title: "Relative 2", action: #selector(TopViewController.onRelativeExampleTapped(_:)), tag: RelativeExampleType.example2.rawValue)),
+                $(makeButton(title: "Relative 3", action: #selector(TopViewController.onRelativeExampleTapped(_:)), tag: RelativeExampleType.example3.rawValue)),
                 
-                $(makeButton(title: "Fit", action: "onFitExampleTapped:", tag: FitExampleType.Example1.rawValue)),
+                $(makeButton(title: "Fit", action: #selector(TopViewController.onFitExampleTapped(_:)), tag: FitExampleType.example1.rawValue)),
                 
-                $(makeButton(title: "Nesting Layout", action: "onNestExampleTapped:", tag: NestExampleType.Example1.rawValue))
+                $(makeButton(title: "Nesting Layout", action: #selector(TopViewController.onNestExampleTapped(_:)), tag: NestExampleType.example1.rawValue))
             ])
         ])
     }
 
-    private func makeButton(title title: String, action: Selector, tag: Int) -> UIButton {
-        let button = UIButton(type: .System)
-        button.setTitle(title, forState: .Normal)
-        button.addTarget(self, action: action, forControlEvents: .TouchUpInside)
+    fileprivate func makeButton(title: String, action: Selector, tag: Int) -> UIButton {
+        let button = UIButton(type: .system)
+        button.setTitle(title, for: UIControlState())
+        button.addTarget(self, action: action, for: .touchUpInside)
         button.tag = tag
         return button
     }
 
-    func onVBoxExampleTapped(sender: UIButton) {
-        if let title = sender.titleForState(.Normal),
-            exampleType = VBoxExampleType(rawValue: sender.tag)
+    func onVBoxExampleTapped(_ sender: UIButton) {
+        if let title = sender.title(for: UIControlState()),
+            let exampleType = VBoxExampleType(rawValue: sender.tag)
         {
             let vc = VBoxExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func onHBoxExampleTapped(sender: UIButton) {
-        if let title = sender.titleForState(.Normal),
-            exampleType = HBoxExampleType(rawValue: sender.tag)
+    func onHBoxExampleTapped(_ sender: UIButton) {
+        if let title = sender.title(for: UIControlState()),
+            let exampleType = HBoxExampleType(rawValue: sender.tag)
         {
             let vc = HBoxExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func onRelativeExampleTapped(sender: UIButton) {
-        if let title = sender.titleForState(.Normal),
-            exampleType = RelativeExampleType(rawValue: sender.tag)
+    func onRelativeExampleTapped(_ sender: UIButton) {
+        if let title = sender.title(for: UIControlState()),
+            let exampleType = RelativeExampleType(rawValue: sender.tag)
         {
             let vc = RelativeExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func onFitExampleTapped(sender: UIButton) {
-        if let title = sender.titleForState(.Normal),
-            exampleType = FitExampleType(rawValue: sender.tag)
+    func onFitExampleTapped(_ sender: UIButton) {
+        if let title = sender.title(for: UIControlState()),
+            let exampleType = FitExampleType(rawValue: sender.tag)
         {
             let vc = FitExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func onNestExampleTapped(sender: UIButton) {
-        if let title = sender.titleForState(.Normal),
-            exampleType = NestExampleType(rawValue: sender.tag)
+    func onNestExampleTapped(_ sender: UIButton) {
+        if let title = sender.title(for: UIControlState()),
+            let exampleType = NestExampleType(rawValue: sender.tag)
         {
             let vc = NestExampleViewController(exampleType: exampleType, headerTitle: title)
             navigationController?.pushViewController(vc, animated: true)

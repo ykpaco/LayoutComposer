@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LayoutComposer"
-  s.version          = "0.2.1"
+  s.version          = "0.3.0"
   s.summary          = "LayoutComposer provides simple and intuitive methods to write the typical UIView layout patterns in swift code."
 
 # This description is used to generate tags and improve search results.

@@ -10,7 +10,7 @@ import UIKit
 import LayoutComposer
 
 enum NestExampleType: Int {
-    case Example1
+    case example1
 }
 
 class NestExampleViewController: ExampleViewController {
@@ -33,7 +33,7 @@ class NestExampleViewController: ExampleViewController {
     override func loadView() {
         super.loadView()
         switch exampleType {
-        case .Example1:
+        case .example1:
             layoutExample1()
         }
     }
@@ -43,55 +43,55 @@ class NestExampleViewController: ExampleViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func layoutExample1() {
+    fileprivate func layoutExample1() {
         let profileContainer = UIView()
-        profileContainer.backgroundColor = UIColor.whiteColor()
+        profileContainer.backgroundColor = UIColor.white
         profileContainer.layer.cornerRadius = 5
 
         let icon = UIImageView(image: UIImage(named: "avatar.jpeg"))
         icon.layer.cornerRadius = 2
         
-        let changeProfileBtn = UIButton(type: .System)
-        changeProfileBtn.setTitle("Update Profile", forState: .Normal)
+        let changeProfileBtn = UIButton(type: .system)
+        changeProfileBtn.setTitle("Update Profile", for: UIControlState())
         changeProfileBtn.layer.borderWidth = 1
-        changeProfileBtn.layer.borderColor = UIColor.lightGrayColor().CGColor
-        changeProfileBtn.titleLabel?.font = UIFont.systemFontOfSize(12)
-        changeProfileBtn.setTitleColor(UIColor.lightGrayColor(), forState: .Normal)
+        changeProfileBtn.layer.borderColor = UIColor.lightGray.cgColor
+        changeProfileBtn.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        changeProfileBtn.setTitleColor(UIColor.lightGray, for: UIControlState())
         changeProfileBtn.layer.cornerRadius = 2
         
         let nameLabel = UILabel()
-        nameLabel.textColor = UIColor.blackColor()
-        nameLabel.font = UIFont.systemFontOfSize(16)
+        nameLabel.textColor = UIColor.black
+        nameLabel.font = UIFont.systemFont(ofSize: 16)
         nameLabel.text = "YKPaco"
         
         let userIDLabel = UILabel()
-        userIDLabel.textColor = UIColor.grayColor()
-        userIDLabel.font = UIFont.systemFontOfSize(10)
+        userIDLabel.textColor = UIColor.gray
+        userIDLabel.font = UIFont.systemFont(ofSize: 10)
         userIDLabel.text = "@ykpaco"
         
         let messageLabel = UILabel()
         messageLabel.numberOfLines = 0
-        messageLabel.textColor = UIColor.blackColor()
-        messageLabel.font = UIFont.systemFontOfSize(12)
+        messageLabel.textColor = UIColor.black
+        messageLabel.font = UIFont.systemFont(ofSize: 12)
         messageLabel.text = "Each layout pattern is able to contain other layout patterns as children and you can form camplicated layouts.\n" +
             "Auto Layout code written by LayoutComposer expresses the view hierarchy." +
         "It makes Auto Layout code very simple and intuitive"
         
         let followLabel = UILabel()
-        followLabel.font = UIFont.systemFontOfSize(12)
+        followLabel.font = UIFont.systemFont(ofSize: 12)
         followLabel.text = "150 follows"
-        followLabel.textColor = UIColor.darkGrayColor()
+        followLabel.textColor = UIColor.darkGray
         
         let followerLabel = UILabel()
-        followerLabel.font = UIFont.systemFontOfSize(12)
+        followerLabel.font = UIFont.systemFont(ofSize: 12)
         followerLabel.text = "130 followers"
-        followerLabel.textColor = UIColor.darkGrayColor()
+        followerLabel.textColor = UIColor.darkGray
         
         contentView.applyLayout(VBox(), items: [
-            $(profileContainer, margins: (10, 10, 10, 10), layout: VBox(pack: .Fit, defaultMargins: (0, 10, 0, 10)), items: [
+            $(profileContainer, margins: (10, 10, 10, 10), layout: VBox(pack: .fit, defaultMargins: (0, 10, 0, 10)), items: [
                 $(nil, height: 50, marginTop: 10, layout: Relative(), items: [
-                    $(icon, width: 50, height: 50, halign: .Left),
-                    $(changeProfileBtn, width: 100, height: 20, halign: .Right, valign: .Top)
+                    $(icon, width: 50, height: 50, halign: .left),
+                    $(changeProfileBtn, width: 100, height: 20, halign: .right, valign: .top)
                 ]),
                 $(nameLabel, marginTop: 5),
                 $(userIDLabel, marginTop: 5),

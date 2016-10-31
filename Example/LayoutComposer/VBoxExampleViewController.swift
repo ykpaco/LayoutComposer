@@ -10,19 +10,19 @@ import UIKit
 import LayoutComposer
 
 enum VBoxExampleType: Int {
-    case Basic
-    case Margin
-    case DefaultMargin
-    case Flex
-    case AlignStart
-    case AlignEnd
-    case AlignCenter
-    case AlignStretch
-    case AlignEachComponent
-    case PackStart
-    case PackEnd
-    case PackCenter
-    case PackFit
+    case basic
+    case margin
+    case defaultMargin
+    case flex
+    case alignStart
+    case alignEnd
+    case alignCenter
+    case alignStretch
+    case alignEachComponent
+    case packStart
+    case packEnd
+    case packCenter
+    case packFit
 }
 
 class VBoxExampleViewController: ExampleViewController {
@@ -45,31 +45,31 @@ class VBoxExampleViewController: ExampleViewController {
     override func loadView() {
         super.loadView()
         switch exampleType {
-        case .Basic:
+        case .basic:
             layoutExampleBasic()
-        case .Margin:
+        case .margin:
             layoutExampleMargin()
-        case .DefaultMargin:
+        case .defaultMargin:
             layoutExampleDefaultMargin()
-        case .Flex:
+        case .flex:
             layoutExampleFlex()
-        case .AlignStart:
+        case .alignStart:
             layoutExampleAlignStart()
-        case .AlignEnd:
+        case .alignEnd:
             layoutExampleAlignEnd()
-        case .AlignCenter:
+        case .alignCenter:
             layoutExampleAlignCenter()
-        case .AlignStretch:
+        case .alignStretch:
             layoutExampleAlignStretch()
-        case .AlignEachComponent:
+        case .alignEachComponent:
             layoutExampleAlignEachComponent()
-        case .PackStart:
+        case .packStart:
             layoutExamplePackStart()
-        case .PackEnd:
+        case .packEnd:
             layoutExamplePackEnd()
-        case .PackCenter:
+        case .packCenter:
             layoutExamplePackCenter()
-        case .PackFit:
+        case .packFit:
             layoutExamplePackFit()
         }
     }
@@ -79,11 +79,11 @@ class VBoxExampleViewController: ExampleViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func layoutExampleBasic() {
-        let view1 = makeItemView(title: "view1 height: 50", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2 height: 100", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 flex: 1", color: UIColor.blueColor())
-        let view4 = makeItemView(title: "view4 flex: 2", color: UIColor.yellowColor())
+    fileprivate func layoutExampleBasic() {
+        let view1 = makeItemView(title: "view1 height: 50", color: UIColor.red)
+        let view2 = makeItemView(title: "view2 height: 100", color: UIColor.green)
+        let view3 = makeItemView(title: "view3 flex: 1", color: UIColor.blue)
+        let view4 = makeItemView(title: "view4 flex: 2", color: UIColor.yellow)
 
         contentView.applyLayout(VBox(), items: [
             $(view1, height: 50),
@@ -93,10 +93,10 @@ class VBoxExampleViewController: ExampleViewController {
         ])
     }
 
-    private func layoutExampleMargin() {
-        let view1 = makeItemView(title: "view1 marginTop: 10", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2 marginTop: 10, marginLeft: 20, marginRight: 30", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 margins: (10, 30, 0, 20)", color: UIColor.blueColor())
+    fileprivate func layoutExampleMargin() {
+        let view1 = makeItemView(title: "view1 marginTop: 10", color: UIColor.red)
+        let view2 = makeItemView(title: "view2 marginTop: 10, marginLeft: 20, marginRight: 30", color: UIColor.green)
+        let view3 = makeItemView(title: "view3 margins: (10, 30, 0, 20)", color: UIColor.blue)
 
         contentView.applyLayout(VBox(), items: [
             $(view1, height: 50, marginTop: 10),
@@ -105,10 +105,10 @@ class VBoxExampleViewController: ExampleViewController {
         ])
     }
     
-    private func layoutExampleDefaultMargin() {
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+    fileprivate func layoutExampleDefaultMargin() {
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
         
         contentView.applyLayout(VBox(defaultMargins: (10, 20, 0, 20)), items: [
             $(view1, height: 50),
@@ -117,11 +117,11 @@ class VBoxExampleViewController: ExampleViewController {
             ])
     }
 
-    private func layoutExampleFlex() {
-        let view1 = makeItemView(title: "view1 height: 50", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2 flex: 1", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 flex: 3", color: UIColor.blueColor())
-        let view4 = makeItemView(title: "view3 flex: 2", color: UIColor.yellowColor())
+    fileprivate func layoutExampleFlex() {
+        let view1 = makeItemView(title: "view1 height: 50", color: UIColor.red)
+        let view2 = makeItemView(title: "view2 flex: 1", color: UIColor.green)
+        let view3 = makeItemView(title: "view3 flex: 3", color: UIColor.blue)
+        let view4 = makeItemView(title: "view3 flex: 2", color: UIColor.yellow)
 
         contentView.applyLayout(VBox(defaultMargins: (10, 20, 0, 20)), items: [
             $(view1, height: 50),
@@ -131,80 +131,80 @@ class VBoxExampleViewController: ExampleViewController {
         ])
     }
 
-    private func layoutExampleAlignStart() {
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+    fileprivate func layoutExampleAlignStart() {
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
-        contentView.applyLayout(VBox(defaultMargins: (10, 0, 0, 0), align: .Start), items: [
+        contentView.applyLayout(VBox(align: .start, defaultMargins: (10, 0, 0, 0)), items: [
             $(view1, width: 50, height: 50),
             $(view2, width: 100, height: 50),
             $(view3, width: 200, height: 100)
         ])
     }
 
-    private func layoutExampleAlignEnd() {
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+    fileprivate func layoutExampleAlignEnd() {
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
-        contentView.applyLayout(VBox(defaultMargins: (10, 0, 0, 0), align: .End), items: [
+        contentView.applyLayout(VBox(align: .end, defaultMargins: (10, 0, 0, 0)), items: [
             $(view1, width: 50, height: 50),
             $(view2, width: 100, height: 50),
             $(view3, width: 200, height: 100)
         ])
     }
 
-    private func layoutExampleAlignCenter() {
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+    fileprivate func layoutExampleAlignCenter() {
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
-        contentView.applyLayout(VBox(defaultMargins: (10, 0, 0, 0), align: .Center), items: [
+        contentView.applyLayout(VBox(align: .center, defaultMargins: (10, 0, 0, 0)), items: [
             $(view1, width: 50, height: 50),
             $(view2, width: 100, height: 50),
             $(view3, width: 200, height: 100)
         ])
     }
 
-    private func layoutExampleAlignStretch() {
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 (if width is set align centered)", color: UIColor.blueColor())
+    fileprivate func layoutExampleAlignStretch() {
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3 (if width is set align centered)", color: UIColor.blue)
 
-        contentView.applyLayout(VBox(defaultMargins: (10, 0, 0, 0), align: .Stretch), items: [
+        contentView.applyLayout(VBox(align: .stretch, defaultMargins: (10, 0, 0, 0)), items: [
             $(view1, height: 50),
             $(view2, height: 50),
             $(view3, width: 250, height: 100)
             ])
     }
 
-    private func layoutExampleAlignEachComponent() {
-        let view1 = makeItemView(title: "view1 align: .Start", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2 align: .Center", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3 align: .End", color: UIColor.blueColor())
-        let view4 = makeItemView(title: "view4 (Default if width is set)", color: UIColor.yellowColor())
-        let view5 = makeItemView(title: "view5 (Default if width is not set)", color: UIColor.magentaColor())
+    fileprivate func layoutExampleAlignEachComponent() {
+        let view1 = makeItemView(title: "view1 align: .Start", color: UIColor.red)
+        let view2 = makeItemView(title: "view2 align: .Center", color: UIColor.green)
+        let view3 = makeItemView(title: "view3 align: .End", color: UIColor.blue)
+        let view4 = makeItemView(title: "view4 (Default if width is set)", color: UIColor.yellow)
+        let view5 = makeItemView(title: "view5 (Default if width is not set)", color: UIColor.magenta)
 
         contentView.applyLayout(VBox(defaultMargins: (10, 0, 0, 0)), items: [
-            $(view1, width: 200, flex: 1, align: .Start),
-            $(view2, width: 200, flex: 1, align: .Center),
-            $(view3, width: 200, flex: 1, align: .End),
+            $(view1, width: 200, flex: 1, align: .start),
+            $(view2, width: 200, flex: 1, align: .center),
+            $(view3, width: 200, flex: 1, align: .end),
             $(view4, width: 200, flex: 1),
             $(view5, flex: 1),
         ])
     }
 
-    private func layoutExamplePackStart() {
+    fileprivate func layoutExamplePackStart() {
         let container = UIView()
-        container.backgroundColor = UIColor.whiteColor()
+        container.backgroundColor = UIColor.white
 
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
         contentView.applyLayout(VBox(), item:
-            $(container, height: 400, layout: VBox(defaultMargins: (10, 0, 0, 0), pack: .Start), items: [
+            $(container, height: 400, layout: VBox(pack: .start, defaultMargins: (10, 0, 0, 0)), items: [
                 $(view1, height: 50),
                 $(view2, height: 50),
                 $(view3, height: 100)
@@ -212,16 +212,16 @@ class VBoxExampleViewController: ExampleViewController {
         )
     }
 
-    private func layoutExamplePackCenter() {
+    fileprivate func layoutExamplePackCenter() {
         let container = UIView()
-        container.backgroundColor = UIColor.whiteColor()
+        container.backgroundColor = UIColor.white
 
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
         contentView.applyLayout(VBox(), item:
-            $(container, height: 400, layout: VBox(defaultMargins: (10, 0, 0, 0), pack: .Center), items: [
+            $(container, height: 400, layout: VBox(pack: .center, defaultMargins: (10, 0, 0, 0)), items: [
                 $(view1, height: 50),
                 $(view2, height: 50),
                 $(view3, height: 100)
@@ -229,16 +229,16 @@ class VBoxExampleViewController: ExampleViewController {
         )
     }
 
-    private func layoutExamplePackEnd() {
+    fileprivate func layoutExamplePackEnd() {
         let container = UIView()
-        container.backgroundColor = UIColor.whiteColor()
+        container.backgroundColor = UIColor.white
 
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
         contentView.applyLayout(VBox(), item:
-            $(container, height: 400, layout: VBox(defaultMargins: (10, 0, 0, 0), pack: .End), items: [
+            $(container, height: 400, layout: VBox(pack: .end, defaultMargins: (10, 0, 0, 0)), items: [
                 $(view1, height: 50),
                 $(view2, height: 50),
                 $(view3, height: 100)
@@ -246,16 +246,16 @@ class VBoxExampleViewController: ExampleViewController {
         )
     }
 
-    private func layoutExamplePackFit() {
+    fileprivate func layoutExamplePackFit() {
         let container = UIView()
-        container.backgroundColor = UIColor.whiteColor()
+        container.backgroundColor = UIColor.white
 
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
-        let view2 = makeItemView(title: "view2", color: UIColor.greenColor())
-        let view3 = makeItemView(title: "view3", color: UIColor.blueColor())
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
+        let view2 = makeItemView(title: "view2", color: UIColor.green)
+        let view3 = makeItemView(title: "view3", color: UIColor.blue)
 
         contentView.applyLayout(VBox(), item:
-            $(container, layout: VBox(defaultMargins: (10, 0, 0, 0), pack: .Fit), items: [ // container height is adjusted to fit items.
+            $(container, layout: VBox(pack: .fit, defaultMargins: (10, 0, 0, 0)), items: [ // container height is adjusted to fit items.
                 $(view1, height: 50),
                 $(view2, height: 50),
                 $(view3, height: 100)

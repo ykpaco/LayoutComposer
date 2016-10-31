@@ -29,26 +29,26 @@ class ExampleViewController: BaseViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
         let header = UIView()
-        header.backgroundColor = UIColor.blackColor()
+        header.backgroundColor = UIColor.black
         
         let titleLabel = UILabel()
         titleLabel.text = headerTitle
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         
-        let backBtn = UIButton(type: .System)
-        backBtn.setTitle("Back", forState: .Normal)
-        backBtn.addTarget(self, action: "onBackTapped:", forControlEvents: .TouchUpInside)
+        let backBtn = UIButton(type: .system)
+        backBtn.setTitle("Back", for: UIControlState())
+        backBtn.addTarget(self, action: #selector(ExampleViewController.onBackTapped(_:)), for: .touchUpInside)
         
         contentView = UIView()
-        contentView.backgroundColor = UIColor.grayColor()
+        contentView.backgroundColor = UIColor.gray
         
         view.applyLayout(VBox(), items: [
             $(header, height: 65, layout: Relative(), items: [
-                $(backBtn, halign: .Left, marginLeft: 10, marginTop: 20),
-                $(titleLabel, halign: .Center, marginTop: 20)
+                $(backBtn, halign: .left, marginTop: 20, marginLeft: 10),
+                $(titleLabel, halign: .center, marginTop: 20)
             ]),
             $(contentView, flex: 1)
         ])
@@ -59,17 +59,17 @@ class ExampleViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func onBackTapped(sender: UIButton) {
-        navigationController?.popViewControllerAnimated(true)
+    func onBackTapped(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
     }
 
-    func makeItemView(title title: String, color: UIColor) -> UIView {
+    func makeItemView(title: String, color: UIColor) -> UIView {
         let retView = UIView()
         retView.backgroundColor = color
 
         let titleLabel = UILabel()
-        titleLabel.textColor = UIColor.blackColor()
-        titleLabel.textAlignment = .Center
+        titleLabel.textColor = UIColor.black
+        titleLabel.textAlignment = .center
         titleLabel.text = title
         titleLabel.numberOfLines = 0
         

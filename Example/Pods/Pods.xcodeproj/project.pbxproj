@@ -13,18 +13,10 @@
 		5A962CCBB315CB0265D437DB89B575B6 /* LayoutComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B5D750372BDDB4ECE87A71C443958D /* LayoutComposer.swift */; };
 		650C4603930A192A2BF11AFC6F06E646 /* Pods-LayoutComposer_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E2EAAEEF31ACEB06BC9C80B09E15599 /* Pods-LayoutComposer_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B2913C4FBF53D438FAAAC7C0DA3E0B /* LayoutComposer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2484F954F44A00C2A572F104B186D04C /* LayoutComposer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EF782B87BEE6E0333C902C20899C25B6 /* LayoutComposer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D6AD877BCFC02AAF45B22AB8B89EE9DA /* LayoutComposer.bundle */; };
 		FEC54DA0B12C2636FDC05E8DF40C709B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F654899B739DF91ADE3541723C16CF46 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		963C655D86EA02B0330518A5B99B26F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0D832BC245240B5BBFA7B9437BD6432A;
-			remoteInfo = "LayoutComposer-LayoutComposer";
-		};
 		FA22C88BAFED846789E376C84148F26D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
@@ -51,7 +43,6 @@
 		A8378755961A2559B62DB3244EEF649D /* LayoutComposer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LayoutComposer.xcconfig; sourceTree = "<group>"; };
 		B84CCC8316D284BF1D0B1920EA7C70AD /* Pods-LayoutComposer_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LayoutComposer_Example-frameworks.sh"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D6AD877BCFC02AAF45B22AB8B89EE9DA /* LayoutComposer.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LayoutComposer.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B5D750372BDDB4ECE87A71C443958D /* LayoutComposer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LayoutComposer.swift; sourceTree = "<group>"; };
 		E1C3A093B8A8B4E25A893A460DA562D7 /* LayoutComposer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = LayoutComposer.modulemap; sourceTree = "<group>"; };
 		E660AC0EAEE7A5852399F0127CB0F7AD /* Pods-LayoutComposer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LayoutComposer_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,13 +65,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC54DA0B12C2636FDC05E8DF40C709B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F5A12E6B4A0E3767E35D9ADB930534F9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +143,6 @@
 		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D6AD877BCFC02AAF45B22AB8B89EE9DA /* LayoutComposer.bundle */,
 				08E64505C24EA7CD9CF447A31905135C /* LayoutComposer.framework */,
 				FB272CAA6B3E35A741A4C3D04B8885CA /* Pods_LayoutComposer_Example.framework */,
 			);
@@ -221,23 +204,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0D832BC245240B5BBFA7B9437BD6432A /* LayoutComposer-LayoutComposer */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3C976D23AF709EF3A229417E18D100A2 /* Build configuration list for PBXNativeTarget "LayoutComposer-LayoutComposer" */;
-			buildPhases = (
-				E3418A35836C3A55757317D2A3526BF7 /* Sources */,
-				F5A12E6B4A0E3767E35D9ADB930534F9 /* Frameworks */,
-				208EE8BC46CD2F91220DA7D81DFE3810 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "LayoutComposer-LayoutComposer";
-			productName = "LayoutComposer-LayoutComposer";
-			productReference = D6AD877BCFC02AAF45B22AB8B89EE9DA /* LayoutComposer.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		0DEDA5D3CC2C5F1BF5C56EDAA5BB6ECD /* Pods-LayoutComposer_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6DE467D06625AB31B53C4F5A95E40653 /* Build configuration list for PBXNativeTarget "Pods-LayoutComposer_Example" */;
@@ -268,7 +234,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				53455C8950E552F468A8AE18610D7505 /* PBXTargetDependency */,
 			);
 			name = LayoutComposer;
 			productName = LayoutComposer;
@@ -282,7 +247,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0810;
+				TargetAttributes = {
+					A252B070ACF029FEB47CECD489815079 = {
+						LastSwiftMigration = 0810;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -297,25 +267,16 @@
 			projectRoot = "";
 			targets = (
 				A252B070ACF029FEB47CECD489815079 /* LayoutComposer */,
-				0D832BC245240B5BBFA7B9437BD6432A /* LayoutComposer-LayoutComposer */,
 				0DEDA5D3CC2C5F1BF5C56EDAA5BB6ECD /* Pods-LayoutComposer_Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		208EE8BC46CD2F91220DA7D81DFE3810 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7B3706FBCF2FAB8851B57BA645DE0E34 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF782B87BEE6E0333C902C20899C25B6 /* LayoutComposer.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,22 +300,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E3418A35836C3A55757317D2A3526BF7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		53455C8950E552F468A8AE18610D7505 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "LayoutComposer-LayoutComposer";
-			target = 0D832BC245240B5BBFA7B9437BD6432A /* LayoutComposer-LayoutComposer */;
-			targetProxy = 963C655D86EA02B0330518A5B99B26F3 /* PBXContainerItemProxy */;
-		};
 		883D2FEC83F2BE987EF1E220DE950DD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = LayoutComposer;
@@ -364,23 +312,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		379E88966F86C9D66E14A144D1EE81B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03ECD7F7649EDD68B9656461AD702162 /* LayoutComposer-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = LayoutComposer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		9CCD5FB2B7F5D9E75DCF4C9FC5EC1E0B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03ECD7F7649EDD68B9656461AD702162 /* LayoutComposer-Private.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 0.1.1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 0.1.1;
@@ -394,10 +330,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/LayoutComposer/LayoutComposer.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = LayoutComposer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -417,13 +355,18 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -447,7 +390,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 871CD6BFA3F93600F4600927E5DBF2AB /* Pods-LayoutComposer_Example.release.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -463,6 +406,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_LayoutComposer_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -472,23 +416,11 @@
 			};
 			name = Release;
 		};
-		BCDA63B4EDDC82492F9C242803503D00 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03ECD7F7649EDD68B9656461AD702162 /* LayoutComposer-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				PRODUCT_NAME = LayoutComposer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
 		DDB10B23A65771FE92B8E831AB8307AF /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03ECD7F7649EDD68B9656461AD702162 /* LayoutComposer-Private.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 0.1.1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 0.1.1;
@@ -502,9 +434,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/LayoutComposer/LayoutComposer.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = LayoutComposer;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -515,7 +449,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E660AC0EAEE7A5852399F0127CB0F7AD /* Pods-LayoutComposer_Example.debug.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -531,6 +465,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_LayoutComposer_Example;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -554,13 +489,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -570,6 +509,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -592,15 +532,6 @@
 			buildConfigurations = (
 				9CCD5FB2B7F5D9E75DCF4C9FC5EC1E0B /* Debug */,
 				DDB10B23A65771FE92B8E831AB8307AF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3C976D23AF709EF3A229417E18D100A2 /* Build configuration list for PBXNativeTarget "LayoutComposer-LayoutComposer" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BCDA63B4EDDC82492F9C242803503D00 /* Debug */,
-				379E88966F86C9D66E14A144D1EE81B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

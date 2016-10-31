@@ -10,7 +10,7 @@ import UIKit
 import LayoutComposer
 
 enum FitExampleType: Int {
-    case Example1
+    case example1
 }
 
 class FitExampleViewController: ExampleViewController {
@@ -33,7 +33,7 @@ class FitExampleViewController: ExampleViewController {
     override func loadView() {
         super.loadView()
         switch exampleType {
-        case .Example1:
+        case .example1:
             layoutExample1()
         }
     }
@@ -43,8 +43,8 @@ class FitExampleViewController: ExampleViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    private func layoutExample1() {
-        let view1 = makeItemView(title: "view1", color: UIColor.redColor())
+    fileprivate func layoutExample1() {
+        let view1 = makeItemView(title: "view1", color: UIColor.red)
 
         contentView.applyLayout(Fit(), item: $(view1))
     }
